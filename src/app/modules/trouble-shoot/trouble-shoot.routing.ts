@@ -10,10 +10,10 @@ export const baseRoutes: Routes = [
   }
 ];
 
-export const TroubleShootRoutes: Routes = baseRoutes.concat([
+export const TroubleShootRoutes: Routes = [
   {
     path: "",
-    children: [
+    children: baseRoutes.concat([
       {
         path: "manager-edit/:id",
         component: ManagerAddEditComponent
@@ -34,6 +34,6 @@ export const TroubleShootRoutes: Routes = baseRoutes.concat([
         path: "",
         redirectTo: "manager-list"
       }
-    ]
+    ])
   }
-]);
+];

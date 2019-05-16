@@ -17,10 +17,10 @@ export const baseRoutes: Routes = [
   }
 ];
 
-export const DowntimeRoutes: Routes = baseRoutes.concat([
+export const DowntimeRoutes: Routes = [
   {
     path: "",
-    children: [
+    children: baseRoutes.concat([
       {
         path: "event-edit/:id",
         component: EventAddEditComponent
@@ -57,6 +57,6 @@ export const DowntimeRoutes: Routes = baseRoutes.concat([
         path: "",
         redirectTo: "event-list"
       }
-    ]
+    ])
   }
-]);
+];
