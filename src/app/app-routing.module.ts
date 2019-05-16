@@ -9,7 +9,7 @@ const routes: Routes = [
     children: [
       {
         path: "downtime",
-        loadChildren: "./downtime/downtime.module#DowntimeModule"
+        loadChildren: "./module-downtime/downtime.module#DowntimeModule"
       }
     ]
   }
