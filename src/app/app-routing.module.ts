@@ -2,6 +2,8 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { MasterPageComponent } from "./app-master-page/master-page.component";
 
+//TODO bla
+
 const routes: Routes = [
   {
     path: "",
@@ -9,7 +11,7 @@ const routes: Routes = [
     children: [
       {
         path: "downtime",
-        loadChildren: "./module-downtime/downtime.module#DowntimeModule"
+        loadChildren: "./modules/downtime/downtime.module#DowntimeModule"
       }
     ]
   }
