@@ -5,6 +5,8 @@ import { EventFilterComponent } from "./events/event-filter/event-filter.compone
 import { ReasonFilterComponent } from "./reasons/reason-filter/reason-filter.component";
 import { ReasonListComponent } from "./reasons/reason-list/reason-list.component";
 import { ReasonAddEditComponent } from "./reasons/reason-add-edit/reason-add-edit.component";
+import { MenuService } from "../../menu/menu.service";
+import { MenuItemModel } from "src/app/shared/models/menu-item.model";
 
 export const baseRoutes: Routes = [
   {
@@ -16,6 +18,17 @@ export const baseRoutes: Routes = [
     redirectTo: "reason-list"
   }
 ];
+
+MenuService.setMenuChildren(
+  "downtime",
+  baseRoutes.map(route => {
+    const menuItem = new MenuItemModel();
+    menuItem.label = route.path;
+    menuItem.icon = "icon";
+    menuItem.link = route.path;
+    return menuItem;
+  })
+);
 
 export const DowntimeRoutes: Routes = baseRoutes.concat([
   {

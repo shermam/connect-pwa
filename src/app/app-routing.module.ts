@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { MasterPageComponent } from "./app-master-page/master-page.component";
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: "",
     component: MasterPageComponent,
