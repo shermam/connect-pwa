@@ -6,7 +6,7 @@ import { AppComponent } from "./app-root-component/app.component";
 import { ServiceWorkerModule } from "@angular/service-worker";
 import { environment } from "../environments/environment";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { MasterPageComponent } from './master-page/master-page.component';
+import { MasterPageComponent } from "./app-master-page/master-page.component";
 
 @NgModule({
   declarations: [AppComponent, MasterPageComponent],
