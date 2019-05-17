@@ -4,7 +4,7 @@ import { RouterModule } from "@angular/router";
 import { DowntimeRoutes } from "./downtime.routing";
 
 //Material
-import { MatCardModule } from "@angular/material";
+import { MatCardModule, MatButtonModule } from "@angular/material";
 
 // Created Components
 import { EventAddEditComponent } from "./events/event-add-edit/event-add-edit.component";
@@ -23,6 +23,11 @@ import { ReasonAddEditComponent } from "./reasons/reason-add-edit/reason-add-edi
     ReasonListComponent,
     ReasonAddEditComponent
   ],
-  imports: [MatCardModule, CommonModule, RouterModule.forChild(DowntimeRoutes)]
+  imports: [
+    MatCardModule,
+    MatButtonModule,
+    CommonModule,
+    RouterModule.forChild(DowntimeRoutes)
+  ]
 })
 export class DowntimeModule {}

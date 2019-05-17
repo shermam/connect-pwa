@@ -3,4 +3,11 @@
 .header-image {
   background: mat-color($primary);
   background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-image i {
+  color: mat-contrast($primary, 500);
 }
