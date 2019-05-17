@@ -12,7 +12,8 @@
   color: mat-contrast($primary, 500);
 }
 
-.locations {
+.locations,
+.reason {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -20,6 +21,14 @@
 
 .locations mat-form-field {
   width: 23%;
+}
+
+.reason mat-form-field {
+  width: 30%;
+}
+
+.observation mat-form-field {
+  width: 100%;
 }
 
 .time-group {
