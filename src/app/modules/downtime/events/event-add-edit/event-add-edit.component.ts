@@ -7,6 +7,7 @@ import {
   EquipmentModel,
   ClassModel
 } from "../../models/Event.models";
+import { combineDateTime, calculeDuration } from "src/app/shared/util";
 
 const mockMills: MillModel[] = [
   {
@@ -129,11 +130,27 @@ export class EventAddEditComponent implements OnInit {
 
   mills: MillModel[] = mockMills;
   classes: ClassModel[] = mockClass;
+  duration: string = "0d 0h 0m";
 
   constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
     //this.addEditForm.valueChanges.subscribe(console.log);
+  }
+
+  calcDuration() {
+    const startTime = this.addEditForm.value.startTime;
+    const startDate: Date = this.addEditForm.value.startDate;
+    const endTime = this.addEditForm.value.endTime;
+    const endDate: Date = this.addEditForm.value.endDate;
+
+    if (!(startTime && startDate && endTime && endDate)) return;
+
+    const combinedStartDate = combineDateTime(startDate, startTime);
+    const combinedEndDate = combineDateTime(endDate, endTime);
+
+    this.duration = calculeDuration(combinedStartDate, combinedEndDate);
+    console.log(this.duration);
   }
 
   change(field: string) {
