@@ -3,6 +3,7 @@ export class AreaModel {
   idMill: number;
   Code: string;
   Name: string;
+  SubAreas: SubAreaModel[];
 }
 
 export class EquipmentModel {
@@ -16,6 +17,7 @@ export class MillModel {
   idMill: number;
   Code: string;
   Name: string;
+  Areas: AreaModel[];
 }
 
 export class SubAreaModel {
@@ -23,4 +25,5 @@ export class SubAreaModel {
   idArea: number;
   Code: string;
   Name: string;
+  Equipments: EquipmentModel[];
 }

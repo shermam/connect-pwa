@@ -1,10 +1,16 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
+import { ReactiveFormsModule } from "@angular/forms";
 import { DowntimeRoutes } from "./downtime.routing";
 
 //Material
-import { MatCardModule, MatButtonModule } from "@angular/material";
+import {
+  MatCardModule,
+  MatButtonModule,
+  MatFormFieldModule,
+  MatSelectModule
+} from "@angular/material";
 
 // Created Components
 import { EventAddEditComponent } from "./events/event-add-edit/event-add-edit.component";
@@ -26,8 +32,11 @@ import { ReasonAddEditComponent } from "./reasons/reason-add-edit/reason-add-edi
   imports: [
     MatCardModule,
     MatButtonModule,
+    MatFormFieldModule,
+    MatSelectModule,
     CommonModule,
-    RouterModule.forChild(DowntimeRoutes)
+    RouterModule.forChild(DowntimeRoutes),
+    ReactiveFormsModule
   ]
 })
 export class DowntimeModule {}

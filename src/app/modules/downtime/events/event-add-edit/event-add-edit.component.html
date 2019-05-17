@@ -7,10 +7,80 @@
     <mat-card-subtitle>Fill the fields below</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    Conteudo
+    <form [formGroup]="addEditForm" (ngSubmit)="onSubmit()" id="addEditForm">
+      <h4 class="mat-subheading-1">Location</h4>
+      <div class="locations">
+        <!-- Mill -->
+        <mat-form-field appearance="outline">
+          <mat-select placeholder="Mill" formControlName="mill">
+            <mat-option [value]="mill" *ngFor="let mill of mills">
+              {{ mill.Code }} - {{ mill.Name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!-- Area -->
+        <mat-form-field appearance="outline">
+          <mat-select placeholder="Area" formControlName="area">
+            <mat-option
+              [value]="area"
+              *ngFor="
+                let area of addEditForm.value.mill
+                  ? addEditForm.value.mill.Areas
+                  : []
+              "
+            >
+              {{ area.Code }} - {{ area.Name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!-- Subarea -->
+        <mat-form-field appearance="outline">
+          <mat-select placeholder="SubArea" formControlName="subarea">
+            <mat-option
+              [value]="subarea"
+              *ngFor="
+                let subarea of addEditForm.value.area
+                  ? addEditForm.value.area.SubAreas
+                  : []
+              "
+            >
+              {{ subarea.Code }} - {{ subarea.Name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!-- Equipament -->
+        <mat-form-field appearance="outline">
+          <mat-select placeholder="Equipment" formControlName="equipment">
+            <mat-option
+              [value]="equipment"
+              *ngFor="
+                let equipment of addEditForm.value.subarea
+                  ? addEditForm.value.subarea.Equipments
+                  : []
+              "
+            >
+              {{ equipment.Code }} - {{ equipment.Name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </form>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-raised-button color="primary">Cancel</button>
-    <button mat-raised-button color="primary">Save</button>
+    <button mat-raised-button color="primary">
+      Cancel
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      form="addEditForm"
+      type="submit"
+      [disabled]="!addEditForm.valid"
+    >
+      Save
+    </button>
   </mat-card-actions>
 </mat-card>

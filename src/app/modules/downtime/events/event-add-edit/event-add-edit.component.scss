@@ -11,3 +11,23 @@
 .header-image i {
   color: mat-contrast($primary, 500);
 }
+
+.locations {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.locations mat-form-field {
+  width: 23%;
+}
+
+@media (max-width: 600px) {
+  .locations {
+    flex-direction: column;
+  }
+
+  .locations mat-form-field {
+    width: 100%;
+  }
+}
