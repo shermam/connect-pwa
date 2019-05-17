@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormControl, FormGroup } from "@angular/forms";
+import { FormControl, FormGroup, FormBuilder } from "@angular/forms";
 import {
   MillModel,
   AreaModel,
@@ -112,25 +112,25 @@ const mockClass: ClassModel[] = [
   styleUrls: ["./event-add-edit.component.scss"]
 })
 export class EventAddEditComponent implements OnInit {
-  addEditForm = new FormGroup({
-    mill: new FormControl(),
-    area: new FormControl(),
-    subarea: new FormControl(),
-    equipment: new FormControl(),
-    startDate: new FormControl(),
-    startTime: new FormControl(),
-    endDate: new FormControl(),
-    endTime: new FormControl(),
-    class: new FormControl(),
-    group: new FormControl(),
-    reason: new FormControl(),
-    observation: new FormControl()
+  addEditForm = this.fb.group({
+    mill: [],
+    area: [],
+    subarea: [],
+    equipment: [],
+    startDate: [],
+    startTime: [],
+    endDate: [],
+    endTime: [],
+    class: [],
+    group: [],
+    reason: [],
+    observation: []
   });
 
   mills: MillModel[] = mockMills;
   classes: ClassModel[] = mockClass;
 
-  constructor() {}
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
     //this.addEditForm.valueChanges.subscribe(console.log);
