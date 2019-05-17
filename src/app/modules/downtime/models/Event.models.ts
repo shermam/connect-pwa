@@ -1,29 +1,27 @@
+export class MillModel {
+  id: number;
+  code: string;
+  name: string;
+  area: AreaModel[];
+}
 export class AreaModel {
-  idArea: number;
+  id: number;
   idMill: number;
-  Code: string;
-  Name: string;
-  SubAreas: SubAreaModel[];
+  code: string;
+  name: string;
+  subArea: SubAreaModel[];
+}
+export class SubAreaModel {
+  id: number;
+  idArea: number;
+  code: string;
+  name: string;
+  equipment: EquipmentModel[];
 }
 
 export class EquipmentModel {
-  idEquipment: number;
+  id: number;
   idSubArea: number;
-  Code: string;
-  Name: string;
-}
-
-export class MillModel {
-  idMill: number;
-  Code: string;
-  Name: string;
-  Areas: AreaModel[];
-}
-
-export class SubAreaModel {
-  idSubArea: number;
-  idArea: number;
-  Code: string;
-  Name: string;
-  Equipments: EquipmentModel[];
+  code: string;
+  name: string;
 }

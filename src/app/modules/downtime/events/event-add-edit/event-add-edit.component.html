@@ -12,41 +12,53 @@
       <div class="locations">
         <!-- Mill -->
         <mat-form-field appearance="outline">
-          <mat-select placeholder="Mill" formControlName="mill">
+          <mat-select
+            placeholder="Mill"
+            formControlName="mill"
+            (selectionChange)="changeLocation('mill')"
+          >
             <mat-option [value]="mill" *ngFor="let mill of mills">
-              {{ mill.Code }} - {{ mill.Name }}
+              {{ mill.code }} - {{ mill.name }}
             </mat-option>
           </mat-select>
         </mat-form-field>
 
         <!-- Area -->
         <mat-form-field appearance="outline">
-          <mat-select placeholder="Area" formControlName="area">
+          <mat-select
+            placeholder="Area"
+            formControlName="area"
+            (selectionChange)="changeLocation('area')"
+          >
             <mat-option
               [value]="area"
               *ngFor="
                 let area of addEditForm.value.mill
-                  ? addEditForm.value.mill.Areas
+                  ? addEditForm.value.mill.area
                   : []
               "
             >
-              {{ area.Code }} - {{ area.Name }}
+              {{ area.code }} - {{ area.name }}
             </mat-option>
           </mat-select>
         </mat-form-field>
 
         <!-- Subarea -->
         <mat-form-field appearance="outline">
-          <mat-select placeholder="SubArea" formControlName="subarea">
+          <mat-select
+            placeholder="SubArea"
+            formControlName="subarea"
+            (selectionChange)="changeLocation('subarea')"
+          >
             <mat-option
               [value]="subarea"
               *ngFor="
                 let subarea of addEditForm.value.area
-                  ? addEditForm.value.area.SubAreas
+                  ? addEditForm.value.area.subArea
                   : []
               "
             >
-              {{ subarea.Code }} - {{ subarea.Name }}
+              {{ subarea.code }} - {{ subarea.name }}
             </mat-option>
           </mat-select>
         </mat-form-field>
@@ -58,11 +70,11 @@
               [value]="equipment"
               *ngFor="
                 let equipment of addEditForm.value.subarea
-                  ? addEditForm.value.subarea.Equipments
+                  ? addEditForm.value.subarea.equipment
                   : []
               "
             >
-              {{ equipment.Code }} - {{ equipment.Name }}
+              {{ equipment.code }} - {{ equipment.name }}
             </mat-option>
           </mat-select>
         </mat-form-field>

@@ -1,30 +1,57 @@
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
-import { MillModel } from "../../models/Event.models";
+import {
+  MillModel,
+  AreaModel,
+  SubAreaModel,
+  EquipmentModel
+} from "../../models/Event.models";
 
 const mockMills: MillModel[] = [
   {
-    idMill: 1,
-    Code: "PRW",
-    Name: "PERAWANG",
-    Areas: [
+    id: 1,
+    code: "PRW",
+    name: "PERAWANG",
+    area: [
       {
-        idArea: 1,
+        id: 1,
         idMill: 1,
-        Code: "A1",
-        Name: "AREA1",
-        SubAreas: [
+        code: "A1",
+        name: "AREA1",
+        subArea: [
           {
-            idSubArea: 1,
+            id: 1,
             idArea: 1,
-            Code: "S1",
-            Name: "SUBAREA1",
-            Equipments: [
+            code: "S1",
+            name: "SUBAREA1",
+            equipment: [
               {
-                idEquipment: 1,
+                id: 1,
                 idSubArea: 1,
-                Code: "E1",
-                Name: "EQUIPMENT1"
+                code: "E1",
+                name: "EQUIPMENT1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        id: 2,
+        idMill: 1,
+        code: "A2",
+        name: "AREA2",
+        subArea: [
+          {
+            id: 2,
+            idArea: 2,
+            code: "S2",
+            name: "SUBAREA2",
+            equipment: [
+              {
+                id: 2,
+                idSubArea: 2,
+                code: "E2",
+                name: "EQUIPMENT2"
               }
             ]
           }
@@ -51,7 +78,24 @@ export class EventAddEditComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.addEditForm.valueChanges.subscribe(console.log);
+  }
+
+  changeLocation(field: string) {
+    const values = this.addEditForm.value;
+    switch (field) {
+      case "mill":
+        values.area = null;
+      case "area":
+        values.subarea = null;
+      case "subarea":
+        values.equipment = null;
+        break;
+    }
+
+    this.addEditForm.setValue(values);
+  }
 
   onSubmit() {
     console.log(this.addEditForm.value);

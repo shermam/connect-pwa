@@ -2,12 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "../../../../environments/environment";
 
-import {
-  AreaModel,
-  EquipmentModel,
-  MillModel,
-  SubAreaModel
-} from "../models/Event.models";
+import { MillModel } from "../models/Event.models";
 
 @Injectable({
   providedIn: "root"
