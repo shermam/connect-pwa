@@ -16,7 +16,8 @@
           <mat-select
             placeholder="Mill"
             formControlName="mill"
-            (selectionChange)="changeLocation('mill')"
+            (selectionChange)="change('mill')"
+            required
           >
             <mat-option [value]="mill" *ngFor="let mill of mills">
               {{ mill.code }} - {{ mill.name }}
@@ -30,7 +31,8 @@
           <mat-select
             placeholder="Area"
             formControlName="area"
-            (selectionChange)="changeLocation('area')"
+            (selectionChange)="change('area')"
+            required
           >
             <mat-option
               [value]="area"
@@ -51,7 +53,8 @@
           <mat-select
             placeholder="SubArea"
             formControlName="subarea"
-            (selectionChange)="changeLocation('subarea')"
+            (selectionChange)="change('subarea')"
+            required
           >
             <mat-option
               [value]="subarea"
@@ -93,7 +96,13 @@
           <!-- Start Date -->
           <mat-form-field appearance="fill">
             <mat-label>Start</mat-label>
-            <input matInput [matDatepicker]="pickerStart" placeholder="Start" />
+            <input
+              matInput
+              [matDatepicker]="pickerStart"
+              placeholder="Start"
+              formControlName="startDate"
+              required
+            />
             <mat-datepicker-toggle
               matSuffix
               [for]="pickerStart"
@@ -103,7 +112,7 @@
 
           <!-- Start Time -->
           <mat-form-field appearance="fill">
-            <input matInput type="time" />
+            <input matInput type="time" formControlName="startTime" required />
           </mat-form-field>
         </div>
         <!-- End -->
@@ -111,7 +120,13 @@
           <!-- End Date -->
           <mat-form-field appearance="fill">
             <mat-label>End</mat-label>
-            <input matInput [matDatepicker]="pickerEnd" placeholder="End" />
+            <input
+              matInput
+              [matDatepicker]="pickerEnd"
+              placeholder="End"
+              formControlName="endDate"
+              required
+            />
             <mat-datepicker-toggle
               matSuffix
               [for]="pickerEnd"
@@ -121,7 +136,7 @@
 
           <!-- End Time -->
           <mat-form-field appearance="fill">
-            <input matInput type="time" />
+            <input matInput type="time" formControlName="endTime" required />
           </mat-form-field>
         </div>
 
@@ -145,7 +160,8 @@
           <mat-select
             placeholder="Class"
             formControlName="class"
-            (selectionChange)="changeLocation('class')"
+            (selectionChange)="change('class')"
+            required
           >
             <mat-option [value]="class" *ngFor="let class of classes">
               {{ class.code }} - {{ class.name }}
@@ -159,13 +175,14 @@
           <mat-select
             placeholder="Group"
             formControlName="group"
-            (selectionChange)="changeLocation('group')"
+            (selectionChange)="change('group')"
+            required
           >
             <mat-option
               [value]="group"
               *ngFor="
-                let group of addEditForm.value.mill
-                  ? addEditForm.value.mill.group
+                let group of addEditForm.value.class
+                  ? addEditForm.value.class.group
                   : []
               "
             >
@@ -177,12 +194,12 @@
         <!-- Reason -->
         <mat-form-field appearance="fill">
           <mat-label>Reason</mat-label>
-          <mat-select placeholder="Reason" formControlName="reason">
+          <mat-select placeholder="Reason" formControlName="reason" required>
             <mat-option
               [value]="reason"
               *ngFor="
-                let reason of addEditForm.value.subarea
-                  ? addEditForm.value.subarea.reason
+                let reason of addEditForm.value.group
+                  ? addEditForm.value.group.reason
                   : []
               "
             >
@@ -195,7 +212,12 @@
       <div class="observation">
         <mat-form-field appearance="fill">
           <mat-label>Observation</mat-label>
-          <textarea matInput placeholder="Observation"></textarea>
+          <textarea
+            matInput
+            placeholder="Observation"
+            formControlName="observation"
+            maxlength="200"
+          ></textarea>
         </mat-form-field>
       </div>
     </form>

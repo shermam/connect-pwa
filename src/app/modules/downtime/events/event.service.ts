@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "../../../../environments/environment";
 
-import { MillModel } from "../models/Event.models";
+import { MillModel, ClassModel } from "../models/Event.models";
 
 @Injectable({
   providedIn: "root"
@@ -16,5 +16,10 @@ export class EventService {
   getMills() {
     const url = `${this.apiUrl}/${this.moduleName}/Common/GetMillListAsync`;
     return this.http.get<MillModel[]>(url);
+  }
+
+  getClasses() {
+    const url = `${this.apiUrl}/${this.moduleName}/DowntimeClass/GetAsync`;
+    return this.http.get<ClassModel[]>(url);
   }
 }

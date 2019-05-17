@@ -4,7 +4,8 @@ import {
   MillModel,
   AreaModel,
   SubAreaModel,
-  EquipmentModel
+  EquipmentModel,
+  ClassModel
 } from "../../models/Event.models";
 
 const mockMills: MillModel[] = [
@@ -60,6 +61,50 @@ const mockMills: MillModel[] = [
     ]
   }
 ];
+const mockClass: ClassModel[] = [
+  {
+    id: 1,
+    code: "C1",
+    name: "CLASS1",
+    group: [
+      {
+        id: 1,
+        code: "G1",
+        name: "GROUP1",
+        idClass: 1,
+        reason: [
+          {
+            id: 1,
+            code: "R1",
+            name: "REASON1",
+            idGroup: 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 2,
+    code: "C2",
+    name: "CLASS2",
+    group: [
+      {
+        id: 2,
+        code: "G2",
+        name: "GROUP2",
+        idClass: 2,
+        reason: [
+          {
+            id: 2,
+            code: "R2",
+            name: "REASON2",
+            idGroup: 2
+          }
+        ]
+      }
+    ]
+  }
+];
 
 @Component({
   selector: "app-event-add-edit",
@@ -71,18 +116,27 @@ export class EventAddEditComponent implements OnInit {
     mill: new FormControl(),
     area: new FormControl(),
     subarea: new FormControl(),
-    equipment: new FormControl()
+    equipment: new FormControl(),
+    startDate: new FormControl(),
+    startTime: new FormControl(),
+    endDate: new FormControl(),
+    endTime: new FormControl(),
+    class: new FormControl(),
+    group: new FormControl(),
+    reason: new FormControl(),
+    observation: new FormControl()
   });
 
   mills: MillModel[] = mockMills;
+  classes: ClassModel[] = mockClass;
 
   constructor() {}
 
   ngOnInit() {
-    this.addEditForm.valueChanges.subscribe(console.log);
+    //this.addEditForm.valueChanges.subscribe(console.log);
   }
 
-  changeLocation(field: string) {
+  change(field: string) {
     const values = this.addEditForm.value;
     switch (field) {
       case "mill":
@@ -91,6 +145,11 @@ export class EventAddEditComponent implements OnInit {
         values.subarea = null;
       case "subarea":
         values.equipment = null;
+        break;
+      case "class":
+        values.group = null;
+      case "group":
+        values.reason = null;
         break;
     }
 

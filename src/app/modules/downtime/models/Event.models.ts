@@ -25,3 +25,23 @@ export class EquipmentModel {
   code: string;
   name: string;
 }
+
+export class ClassModel {
+  id: number;
+  code: string;
+  name: string;
+  group: GroupModel[];
+}
+export class GroupModel {
+  id: number;
+  code: string;
+  name: string;
+  idClass: number;
+  reason: ReasonModel[];
+}
+export class ReasonModel {
+  id: number;
+  code: string;
+  name: string;
+  idGroup: number;
+}
