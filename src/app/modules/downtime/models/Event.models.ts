@@ -45,3 +45,14 @@ export class ReasonModel {
   name: string;
   idGroup: number;
 }
+
+export class EventModel {
+  id: number;
+  observation: string;
+  startTime: Date;
+  endTime: Date;
+  idReason: number;
+  idSubArea: number;
+  idEquipment: number;
+  idSubEquipment: number;
+}

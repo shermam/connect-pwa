@@ -3,6 +3,7 @@ import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
 import { ReactiveFormsModule } from "@angular/forms";
 import { DowntimeRoutes } from "./downtime.routing";
+import { HttpClientModule } from "@angular/common/http";
 
 //Material
 import {
@@ -23,6 +24,7 @@ import { EventFilterComponent } from "./events/event-filter/event-filter.compone
 import { ReasonFilterComponent } from "./reasons/reason-filter/reason-filter.component";
 import { ReasonListComponent } from "./reasons/reason-list/reason-list.component";
 import { ReasonAddEditComponent } from "./reasons/reason-add-edit/reason-add-edit.component";
+import { EventService } from "./events/event.service";
 
 @NgModule({
   declarations: [
@@ -43,8 +45,10 @@ import { ReasonAddEditComponent } from "./reasons/reason-add-edit/reason-add-edi
     MatNativeDateModule,
     MatDividerModule,
     CommonModule,
+    HttpClientModule,
     RouterModule.forChild(DowntimeRoutes),
     ReactiveFormsModule
-  ]
+  ],
+  providers: [EventService]
 })
 export class DowntimeModule {}

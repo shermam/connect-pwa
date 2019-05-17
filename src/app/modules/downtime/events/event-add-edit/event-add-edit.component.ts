@@ -5,107 +5,11 @@ import {
   AreaModel,
   SubAreaModel,
   EquipmentModel,
-  ClassModel
+  ClassModel,
+  EventModel
 } from "../../models/Event.models";
 import { combineDateTime, calculeDuration } from "src/app/shared/util";
-
-const mockMills: MillModel[] = [
-  {
-    id: 1,
-    code: "PRW",
-    name: "PERAWANG",
-    area: [
-      {
-        id: 1,
-        idMill: 1,
-        code: "A1",
-        name: "AREA1",
-        subArea: [
-          {
-            id: 1,
-            idArea: 1,
-            code: "S1",
-            name: "SUBAREA1",
-            equipment: [
-              {
-                id: 1,
-                idSubArea: 1,
-                code: "E1",
-                name: "EQUIPMENT1"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        id: 2,
-        idMill: 1,
-        code: "A2",
-        name: "AREA2",
-        subArea: [
-          {
-            id: 2,
-            idArea: 2,
-            code: "S2",
-            name: "SUBAREA2",
-            equipment: [
-              {
-                id: 2,
-                idSubArea: 2,
-                code: "E2",
-                name: "EQUIPMENT2"
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
-];
-const mockClass: ClassModel[] = [
-  {
-    id: 1,
-    code: "C1",
-    name: "CLASS1",
-    group: [
-      {
-        id: 1,
-        code: "G1",
-        name: "GROUP1",
-        idClass: 1,
-        reason: [
-          {
-            id: 1,
-            code: "R1",
-            name: "REASON1",
-            idGroup: 1
-          }
-        ]
-      }
-    ]
-  },
-  {
-    id: 2,
-    code: "C2",
-    name: "CLASS2",
-    group: [
-      {
-        id: 2,
-        code: "G2",
-        name: "GROUP2",
-        idClass: 2,
-        reason: [
-          {
-            id: 2,
-            code: "R2",
-            name: "REASON2",
-            idGroup: 2
-          }
-        ]
-      }
-    ]
-  }
-];
+import { EventService } from "../event.service";
 
 @Component({
   selector: "app-event-add-edit",
@@ -113,7 +17,9 @@ const mockClass: ClassModel[] = [
   styleUrls: ["./event-add-edit.component.scss"]
 })
 export class EventAddEditComponent implements OnInit {
+  id: number = null;
   addEditForm = this.fb.group({
+    id: [this.id],
     mill: [],
     area: [],
     subarea: [],
@@ -128,14 +34,19 @@ export class EventAddEditComponent implements OnInit {
     observation: []
   });
 
-  mills: MillModel[] = mockMills;
-  classes: ClassModel[] = mockClass;
+  mills: MillModel[] = null;
+  classes: ClassModel[] = null;
   duration: string = "0d 0h 0m";
+  combinedStartDate: Date;
+  combinedEndDate: Date;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private eventService: EventService) {}
 
   ngOnInit() {
-    //this.addEditForm.valueChanges.subscribe(console.log);
+    this.eventService.getMills().subscribe(mills => (this.mills = mills));
+    this.eventService
+      .getClasses()
+      .subscribe(classes => (this.classes = classes));
   }
 
   calcDuration() {
@@ -146,11 +57,13 @@ export class EventAddEditComponent implements OnInit {
 
     if (!(startTime && startDate && endTime && endDate)) return;
 
-    const combinedStartDate = combineDateTime(startDate, startTime);
-    const combinedEndDate = combineDateTime(endDate, endTime);
+    this.combinedStartDate = combineDateTime(startDate, startTime);
+    this.combinedEndDate = combineDateTime(endDate, endTime);
 
-    this.duration = calculeDuration(combinedStartDate, combinedEndDate);
-    console.log(this.duration);
+    this.duration = calculeDuration(
+      this.combinedStartDate,
+      this.combinedEndDate
+    );
   }
 
   change(field: string) {
@@ -174,6 +87,25 @@ export class EventAddEditComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.addEditForm.value);
+    const event: EventModel = new EventModel();
+    const form = this.addEditForm.value;
+
+    event.id = form.id;
+    event.observation = form.observation;
+    event.startTime = this.combinedStartDate;
+    event.endTime = this.combinedEndDate;
+    event.idReason = form.reason.id;
+    event.idSubArea = form.subarea.id;
+    event.idEquipment = form.equipment ? form.equipment.id : null;
+    event.idSubEquipment = null;
+
+    this.eventService.postEvent(event).subscribe(
+      success => {
+        alert("sucesso");
+      },
+      error => {
+        alert(error.error ? error.error.message : error.message);
+      }
+    );
   }
 }
