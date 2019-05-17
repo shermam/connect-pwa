@@ -12,6 +12,7 @@
       <div class="locations">
         <!-- Mill -->
         <mat-form-field appearance="outline">
+          <mat-label>Mill</mat-label>
           <mat-select
             placeholder="Mill"
             formControlName="mill"
@@ -25,6 +26,7 @@
 
         <!-- Area -->
         <mat-form-field appearance="outline">
+          <mat-label>Area</mat-label>
           <mat-select
             placeholder="Area"
             formControlName="area"
@@ -45,6 +47,7 @@
 
         <!-- Subarea -->
         <mat-form-field appearance="outline">
+          <mat-label>SubArea</mat-label>
           <mat-select
             placeholder="SubArea"
             formControlName="subarea"
@@ -65,6 +68,7 @@
 
         <!-- Equipament -->
         <mat-form-field appearance="outline">
+          <mat-label>Equipment</mat-label>
           <mat-select placeholder="Equipment" formControlName="equipment">
             <mat-option
               [value]="equipment"
@@ -78,6 +82,53 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
+      </div>
+
+      <div class="time">
+        <!-- Start -->
+        <div class="time-group">
+          <!-- Start Date -->
+          <mat-form-field appearance="outline">
+            <mat-label>Start</mat-label>
+            <input matInput [matDatepicker]="pickerStart" placeholder="Start" />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="pickerStart"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #pickerStart></mat-datepicker>
+          </mat-form-field>
+
+          <!-- Start Time -->
+          <mat-form-field appearance="outline">
+            <input matInput type="time" />
+          </mat-form-field>
+        </div>
+        <!-- End -->
+        <div class="time-group">
+          <!-- End Date -->
+          <mat-form-field appearance="outline">
+            <mat-label>End</mat-label>
+            <input matInput [matDatepicker]="pickerEnd" placeholder="End" />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="pickerEnd"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #pickerEnd></mat-datepicker>
+          </mat-form-field>
+
+          <!-- End Time -->
+          <mat-form-field appearance="outline">
+            <input matInput type="time" />
+          </mat-form-field>
+        </div>
+
+        <!-- Duration -->
+        <div class="time-group">
+          <mat-form-field appearance="outline">
+            <mat-label>Duration</mat-label>
+            <input matInput />
+          </mat-form-field>
+        </div>
       </div>
     </form>
   </mat-card-content>

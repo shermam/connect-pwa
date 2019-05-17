@@ -22,12 +22,26 @@
   width: 23%;
 }
 
+.time-group {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+
+.time {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 @media (max-width: 600px) {
-  .locations {
+  .locations,
+  .time {
     flex-direction: column;
   }
 
-  .locations mat-form-field {
+  .locations mat-form-field,
+  .time-group {
     width: 100%;
   }
 }

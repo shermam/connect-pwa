@@ -9,7 +9,10 @@ import {
   MatCardModule,
   MatButtonModule,
   MatFormFieldModule,
-  MatSelectModule
+  MatSelectModule,
+  MatDatepickerModule,
+  MatInputModule,
+  MatNativeDateModule
 } from "@angular/material";
 
 // Created Components
@@ -34,6 +37,9 @@ import { ReasonAddEditComponent } from "./reasons/reason-add-edit/reason-add-edi
     MatButtonModule,
     MatFormFieldModule,
     MatSelectModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatNativeDateModule,
     CommonModule,
     RouterModule.forChild(DowntimeRoutes),
     ReactiveFormsModule
