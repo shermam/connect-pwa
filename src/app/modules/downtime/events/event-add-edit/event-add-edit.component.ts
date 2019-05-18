@@ -10,6 +10,7 @@ import {
 } from "../../models/Event.models";
 import { combineDateTime, calculeDuration } from "src/app/shared/util";
 import { EventService } from "../event.service";
+import { Location } from "@angular/common";
 
 @Component({
   selector: "app-event-add-edit",
@@ -40,7 +41,11 @@ export class EventAddEditComponent implements OnInit {
   combinedStartDate: Date;
   combinedEndDate: Date;
 
-  constructor(private fb: FormBuilder, private eventService: EventService) {}
+  constructor(
+    private fb: FormBuilder,
+    private eventService: EventService,
+    private location: Location
+  ) {}
 
   ngOnInit() {
     this.eventService.getMills().subscribe(mills => (this.mills = mills));
@@ -107,5 +112,9 @@ export class EventAddEditComponent implements OnInit {
         alert(error.error ? error.error.message : error.message);
       }
     );
+  }
+
+  cancel() {
+    this.location.back();
   }
 }
