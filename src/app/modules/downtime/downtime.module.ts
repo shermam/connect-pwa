@@ -14,7 +14,8 @@ import {
   MatDatepickerModule,
   MatInputModule,
   MatNativeDateModule,
-  MatDividerModule
+  MatDividerModule,
+  MatIconModule
 } from "@angular/material";
 
 // Created Components
@@ -44,6 +45,7 @@ import { EventService } from "./events/event.service";
     MatInputModule,
     MatNativeDateModule,
     MatDividerModule,
+    MatIconModule,
     CommonModule,
     HttpClientModule,
     RouterModule.forChild(DowntimeRoutes),
