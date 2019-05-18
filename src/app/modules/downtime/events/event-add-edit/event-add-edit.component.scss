@@ -1,5 +1,10 @@
 @import "../../../../../styles.scss";
 
+:host {
+  max-width: 800px;
+  width: 100%;
+}
+
 .header-image {
   background: mat-color($primary);
   background-size: cover;
