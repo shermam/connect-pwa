@@ -1,7 +1,7 @@
 <mat-card>
   <mat-card-header>
-    <div mat-card-avatar class="header-image">
-      <i class="material-icons">assignment</i>
+    <div mat-card-avatar class="header-image mat-elevation-z3">
+      <i class="material-icons">event_note</i>
     </div>
     <mat-card-title>Add Event</mat-card-title>
     <mat-card-subtitle>Downtime</mat-card-subtitle>
@@ -159,7 +159,7 @@
         <div class="time-group">
           <mat-form-field appearance="fill">
             <mat-label>Duration</mat-label>
-            <input matInput [value]="duration" />
+            <input matInput [value]="duration" disabled="true" />
           </mat-form-field>
         </div>
       </div>
