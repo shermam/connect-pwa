@@ -19,44 +19,40 @@ export const baseRoutes: Routes = [
 
 export const DowntimeRoutes: Routes = [
   {
+    path: "event-edit/:id",
+    component: EventAddEditComponent
+  },
+  {
+    path: "event-add",
+    component: EventAddEditComponent
+  },
+  {
+    path: "event-list",
+    component: EventListComponent
+  },
+  {
+    path: "event-filter",
+    component: EventFilterComponent
+  },
+  {
+    path: "reason-edit/:id",
+    component: ReasonAddEditComponent
+  },
+  {
+    path: "reason-add",
+    component: ReasonAddEditComponent
+  },
+  {
+    path: "reason-list",
+    component: ReasonListComponent
+  },
+  {
+    path: "reason-filter",
+    component: ReasonFilterComponent
+  },
+  {
     path: "",
-    children: baseRoutes.concat([
-      {
-        path: "event-edit/:id",
-        component: EventAddEditComponent
-      },
-      {
-        path: "event-add",
-        component: EventAddEditComponent
-      },
-      {
-        path: "event-list",
-        component: EventListComponent
-      },
-      {
-        path: "event-filter",
-        component: EventFilterComponent
-      },
-      {
-        path: "reason-edit/:id",
-        component: ReasonAddEditComponent
-      },
-      {
-        path: "reason-add",
-        component: ReasonAddEditComponent
-      },
-      {
-        path: "reason-list",
-        component: ReasonListComponent
-      },
-      {
-        path: "reason-filter",
-        component: ReasonFilterComponent
-      },
-      {
-        path: "",
-        redirectTo: "event-list"
-      }
-    ])
-  }
+    redirectTo: "event-list"
+  },
+  ...baseRoutes
 ];
