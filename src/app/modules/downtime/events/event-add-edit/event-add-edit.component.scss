@@ -5,6 +5,11 @@
   width: 100%;
 }
 
+mat-card-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .header-image {
   background: mat-color($primary);
   background-size: cover;

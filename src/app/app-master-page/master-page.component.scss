@@ -1,6 +1,15 @@
-:host {
-  padding: 15px;
+main {
+  padding: 71px 15px 15px 15px; /* compensating the toolbar */
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+mat-toolbar * {
+  margin: 0 10px;
+}
+
+mat-toolbar {
+  position: fixed;
+  z-index: 1;
 }
