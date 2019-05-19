@@ -112,7 +112,7 @@ export class EventAddEditComponent implements OnInit {
         this.alert("Success", "Data successfully saved!");
       },
       error => {
-        alert(error.error ? error.error.message : error.message);
+        this.alert("Error", error.error ? error.error.message : error.message);
       }
     );
   }
