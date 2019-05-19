@@ -11,6 +11,8 @@ import {
 import { combineDateTime, calculeDuration } from "src/app/shared/util";
 import { EventService } from "../event.service";
 import { Location } from "@angular/common";
+import { MatDialog } from "@angular/material";
+import { AlertComponent } from "src/app/shared/components/alert/alert.component";
 
 @Component({
   selector: "app-event-add-edit",
@@ -44,7 +46,8 @@ export class EventAddEditComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private eventService: EventService,
-    private location: Location
+    private location: Location,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -106,12 +109,23 @@ export class EventAddEditComponent implements OnInit {
 
     this.eventService.postEvent(event).subscribe(
       success => {
-        alert("sucesso");
+        this.alert("Success", "Data successfully saved!");
       },
       error => {
         alert(error.error ? error.error.message : error.message);
       }
     );
+  }
+
+  alert(title: string, text: string) {
+    const dialogRef = this.dialog.open(AlertComponent, {
+      width: "250px",
+      data: { title, text }
+    });
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.location.back();
+    });
   }
 
   cancel() {

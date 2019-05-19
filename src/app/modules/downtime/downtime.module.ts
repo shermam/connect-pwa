@@ -4,6 +4,7 @@ import { RouterModule } from "@angular/router";
 import { ReactiveFormsModule } from "@angular/forms";
 import { DowntimeRoutes } from "./downtime.routing";
 import { HttpClientModule } from "@angular/common/http";
+import { SharedModule } from "src/app/shared/shared.module";
 
 //Material
 import {
@@ -46,6 +47,7 @@ import { EventService } from "./events/event.service";
     MatNativeDateModule,
     MatDividerModule,
     MatIconModule,
+    SharedModule,
     CommonModule,
     HttpClientModule,
     RouterModule.forChild(DowntimeRoutes),
