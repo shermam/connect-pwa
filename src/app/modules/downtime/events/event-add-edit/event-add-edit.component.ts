@@ -48,7 +48,7 @@ export class EventAddEditComponent implements OnInit {
     private eventService: EventService,
     private location: Location,
     public dialog: MatDialog
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.eventService.getMills().subscribe(mills => (this.mills = mills));
@@ -112,6 +112,7 @@ export class EventAddEditComponent implements OnInit {
         this.alert("Success", "Data successfully saved!");
       },
       error => {
+        console.log(error);
         this.alert("Error", error.error ? error.error.message : error.message);
       }
     );
