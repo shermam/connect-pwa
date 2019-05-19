@@ -258,19 +258,23 @@ export class EventService {
   constructor(private http: HttpClient) {}
 
   getMills() {
-    const url = `${this.apiUrl}/${this.moduleName}/Common/GetMillListAsync`;
+    const url = `${this.apiUrl}/${
+      this.moduleName
+    }/Location/tree?$expand=Area($expand=SubArea($expand=Equipment))`;
     //return this.http.get<MillModel[]>(url);
     return of(mockMills);
   }
 
   getClasses() {
-    const url = `${this.apiUrl}/${this.moduleName}/DowntimeClass/GetAsync`;
+    const url = `${this.apiUrl}/${
+      this.moduleName
+    }/ClassReason/tree?$expand=GroupReason($expand=Reason)`;
     //return this.http.get<ClassModel[]>(url);
     return of(mockClass);
   }
 
   postEvent(event: EventModel) {
-    const url = `${this.apiUrl}/${this.moduleName}/DowntimeEvent/Post`;
+    const url = `${this.apiUrl}/${this.moduleName}/event`;
     //return this.http.post<EventModel[]>(url, event);
     return of(event);
     //return throwError(new Error("deu pau"));
