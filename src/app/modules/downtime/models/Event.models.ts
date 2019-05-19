@@ -1,58 +1,99 @@
 export class MillModel {
-  id: number;
-  code: string;
-  name: string;
-  area: AreaModel[];
+  Area: AreaModel[];
+  IdMill: number;
+  Code: string;
+  Name: string;
+  Description: string;
+  Active: boolean;
+  InsDateTime: string;
+  UpdDateTime: string;
+  UserCreated: string;
+  UserUpdated: string;
 }
 export class AreaModel {
-  id: number;
-  idMill: number;
-  code: string;
-  name: string;
-  subArea: SubAreaModel[];
+  SubArea: SubAreaModel[];
+  IdArea: number;
+  IdMill: number;
+  InsDateTime: string;
+  Active: boolean;
+  UserCreated: string;
+  UserUpdated: string;
+  Code: string;
+  Name: string;
+  UpdDateTime: string;
 }
 export class SubAreaModel {
-  id: number;
-  idArea: number;
-  code: string;
-  name: string;
-  equipment: EquipmentModel[];
+  Equipment: EquipmentModel[];
+  IdSubArea: number;
+  IdArea: number;
+  Code: string;
+  Name: string;
+  Description: string;
+  Active: boolean;
+  InsDateTime: string;
+  UpdDateTime: string;
+  UserCreated: string;
+  UserUpdated: string;
 }
 
 export class EquipmentModel {
-  id: number;
-  idSubArea: number;
-  code: string;
-  name: string;
+  IdEquipment: number;
+  IdSubArea: number;
+  Code: string;
+  Name: string;
+  Description: string;
+  Active: boolean;
+  InsDateTime: string;
+  UpdDateTime: string;
+  UserCreated: string;
+  UserUpdated: string;
 }
 
 export class ClassModel {
-  id: number;
-  code: string;
-  name: string;
-  group: GroupModel[];
+  GroupReason: GroupModel[];
+  IdClass: number;
+  Code: string;
+  Name: string;
+  Description: string;
+  Active: true;
+  InsDateTime: string;
+  UpdDateTime: string;
+  UserCreated: string;
+  UserUpdated: string;
 }
 export class GroupModel {
-  id: number;
-  code: string;
-  name: string;
-  idClass: number;
-  reason: ReasonModel[];
+  Reason: ReasonModel[];
+  IdGroup: number;
+  IdClass: number;
+  Code: string;
+  Name: string;
+  Description: string;
+  Active: true;
+  InsDateTime: string;
+  UpdDateTime: string;
+  UserCreated: string;
+  UserUpdated: string;
 }
 export class ReasonModel {
-  id: number;
-  code: string;
-  name: string;
-  idGroup: number;
+  IdReason: number;
+  IdGroup: number;
+  Code: string;
+  Name: string;
+  Description: string;
+  Active: boolean;
+  InsDateTime: string;
+  UpdDateTime: string;
+  UserCreated: string;
+  UserUpdated: string;
 }
 
 export class EventModel {
   id: number;
-  observation: string;
-  startTime: Date;
-  endTime: Date;
-  idReason: number;
-  idSubArea: number;
-  idEquipment: number;
-  idSubEquipment: number;
+  Comment: string;
+  BeginDateTime: Date;
+  EndDateTime: Date;
+  IdReason: number;
+  IdSubArea: number;
+  IdEquipment: number;
+  IdSubEquipament: number;
 }

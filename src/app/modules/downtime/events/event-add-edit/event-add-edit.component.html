@@ -20,7 +20,7 @@
             required
           >
             <mat-option [value]="mill" *ngFor="let mill of mills">
-              {{ mill.code }} - {{ mill.name }}
+              {{ mill.Code }} - {{ mill.Name }}
             </mat-option>
           </mat-select>
         </mat-form-field>
@@ -38,11 +38,11 @@
               [value]="area"
               *ngFor="
                 let area of addEditForm.value.mill
-                  ? addEditForm.value.mill.area
+                  ? addEditForm.value.mill.Area
                   : []
               "
             >
-              {{ area.code }} - {{ area.name }}
+              {{ area.Code }} - {{ area.Name }}
             </mat-option>
           </mat-select>
         </mat-form-field>
@@ -60,11 +60,11 @@
               [value]="subarea"
               *ngFor="
                 let subarea of addEditForm.value.area
-                  ? addEditForm.value.area.subArea
+                  ? addEditForm.value.area.SubArea
                   : []
               "
             >
-              {{ subarea.code }} - {{ subarea.name }}
+              {{ subarea.Code }} - {{ subarea.Name }}
             </mat-option>
           </mat-select>
         </mat-form-field>
@@ -77,11 +77,11 @@
               [value]="equipment"
               *ngFor="
                 let equipment of addEditForm.value.subarea
-                  ? addEditForm.value.subarea.equipment
+                  ? addEditForm.value.subarea.Equipment
                   : []
               "
             >
-              {{ equipment.code }} - {{ equipment.name }}
+              {{ equipment.Code }} - {{ equipment.Name }}
             </mat-option>
           </mat-select>
         </mat-form-field>
@@ -181,7 +181,7 @@
             required
           >
             <mat-option [value]="class" *ngFor="let class of classes">
-              {{ class.code }} - {{ class.name }}
+              {{ class.Code }} - {{ class.Name }}
             </mat-option>
           </mat-select>
         </mat-form-field>
@@ -199,11 +199,11 @@
               [value]="group"
               *ngFor="
                 let group of addEditForm.value.class
-                  ? addEditForm.value.class.group
+                  ? addEditForm.value.class.GroupReason
                   : []
               "
             >
-              {{ group.code }} - {{ group.name }}
+              {{ group.Code }} - {{ group.Name }}
             </mat-option>
           </mat-select>
         </mat-form-field>
@@ -216,11 +216,11 @@
               [value]="reason"
               *ngFor="
                 let reason of addEditForm.value.group
-                  ? addEditForm.value.group.reason
+                  ? addEditForm.value.group.Reason
                   : []
               "
             >
-              {{ reason.code }} - {{ reason.name }}
+              {{ reason.Code }} - {{ reason.Name }}
             </mat-option>
           </mat-select>
         </mat-form-field>

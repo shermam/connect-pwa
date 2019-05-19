@@ -99,13 +99,13 @@ export class EventAddEditComponent implements OnInit {
     const form = this.addEditForm.value;
 
     event.id = form.id;
-    event.observation = form.observation;
-    event.startTime = this.combinedStartDate;
-    event.endTime = this.combinedEndDate;
-    event.idReason = form.reason.id;
-    event.idSubArea = form.subarea.id;
-    event.idEquipment = form.equipment ? form.equipment.id : null;
-    event.idSubEquipment = null;
+    event.Comment = form.observation;
+    event.BeginDateTime = this.combinedStartDate;
+    event.EndDateTime = this.combinedEndDate;
+    event.IdReason = form.reason.IdReason;
+    event.IdSubArea = form.subarea.IdSubArea;
+    event.IdEquipment = form.equipment ? form.equipment.IdEquipment : null;
+    event.IdSubEquipament = null;
 
     this.eventService.postEvent(event).subscribe(
       success => {
