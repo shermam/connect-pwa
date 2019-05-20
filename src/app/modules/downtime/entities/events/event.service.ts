@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { environment } from "../../../../environments/environment";
+import { environment } from "../../../../../environments/environment";
 
-import { MillModel, ClassModel, EventModel } from "../models/Event.models";
+import { MillModel, ClassModel, EventModel } from "../../models/Event.models";
 import { of, throwError } from "rxjs";
 
 const mockMills: MillModel[] = [
@@ -255,22 +255,22 @@ export class EventService {
   apiUrl: string = environment.apiUrl;
   moduleName: string = "downtime";
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getMills() {
     const url = `${this.apiUrl}/${
       this.moduleName
-      }/Location/tree?$expand=Area($expand=SubArea($expand=Equipment))`;
-    return this.http.get<MillModel[]>(url);
-    //return of(mockMills);
+    }/Location/tree?$expand=Area($expand=SubArea($expand=Equipment))`;
+    //return this.http.get<MillModel[]>(url);
+    return of(mockMills);
   }
 
   getClasses() {
     const url = `${this.apiUrl}/${
       this.moduleName
-      }/ClassReason/tree?$expand=GroupReason($expand=Reason)`;
-    return this.http.get<ClassModel[]>(url);
-    //return of(mockClass);
+    }/ClassReason/tree?$expand=GroupReason($expand=Reason)`;
+    //return this.http.get<ClassModel[]>(url);
+    return of(mockClass);
   }
 
   postEvent(event: EventModel) {

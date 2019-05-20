@@ -7,7 +7,7 @@ import {
   EquipmentModel,
   ClassModel,
   EventModel
-} from "../../models/Event.models";
+} from "../../../models/Event.models";
 import { combineDateTime, calculeDuration } from "src/app/shared/util";
 import { EventService } from "../event.service";
 import { Location } from "@angular/common";
@@ -48,7 +48,7 @@ export class EventAddEditComponent implements OnInit {
     private eventService: EventService,
     private location: Location,
     public dialog: MatDialog
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.eventService.getMills().subscribe(mills => (this.mills = mills));
