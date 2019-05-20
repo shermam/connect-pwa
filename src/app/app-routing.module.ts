@@ -12,7 +12,7 @@ const routes: Routes = [
         loadChildren: "./modules/downtime/downtime.module#DowntimeModule"
       },
       {
-        path: "trouble-shooting",
+        path: "trouble-shoot",
         loadChildren:
           "./modules/trouble-shoot/trouble-shoot.module#TroubleShootModule"
       }

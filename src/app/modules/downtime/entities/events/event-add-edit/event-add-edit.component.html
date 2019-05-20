@@ -3,8 +3,8 @@
     <div mat-card-avatar class="header-image mat-elevation-z3">
       <i class="material-icons">event_note</i>
     </div>
-    <mat-card-title>Add Event</mat-card-title>
     <mat-card-subtitle>Downtime</mat-card-subtitle>
+    <mat-card-title>Add Event</mat-card-title>
   </mat-card-header>
   <mat-card-content>
     <form [formGroup]="addEditForm" (ngSubmit)="onSubmit()" id="addEditForm">
@@ -242,8 +242,8 @@
     </form>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-raised-button color="primary" (click)="cancel()">
-      Cancel
+    <button mat-button (click)="cancel()">
+      CANCEL
     </button>
     <button
       mat-raised-button
@@ -252,7 +252,7 @@
       type="submit"
       [disabled]="!addEditForm.valid"
     >
-      Save
+      SAVE
     </button>
   </mat-card-actions>
 </mat-card>

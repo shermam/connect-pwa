@@ -1,8 +1,12 @@
-@import "../../../../../styles.scss";
+@import "../../../../../../styles.scss";
 
 :host {
   max-width: 800px;
   width: 100%;
+}
+
+mat-card-subtitle {
+  margin-bottom: 10px;
 }
 
 .time {
