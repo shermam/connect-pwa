@@ -12,7 +12,8 @@ export class AuthGuardService {
     let isLoggedIn = this.authService.isLoggedInObs();
     isLoggedIn.subscribe((loggedin) => {
       if (!loggedin) {
-        this.router.navigate(['unauthorized']);
+        // this.router.navigate(['unauthorized']);
+        this.authService.login();
       }
     });
     return isLoggedIn;

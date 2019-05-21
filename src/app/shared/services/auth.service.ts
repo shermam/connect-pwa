@@ -1,7 +1,6 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { UserManager, User } from 'oidc-client';
 import { environment } from 'src/environments/environment';
-import { HttpClient } from '@angular/common/http';
 import { Observable, from } from 'rxjs';
 import { map } from "rxjs/operators";
 
@@ -15,7 +14,7 @@ export class AuthService {
   loggedIn = false;
   authHeaders: Headers;
 
-  constructor(private http: HttpClient) {
+  constructor() {
     this.mgr.getUser()
       .then((user) => {
         if (user) {
@@ -87,7 +86,7 @@ export class AuthService {
     });
   }
 
-  startSigninMainWindow() {
+  login() {
     this.mgr.signinRedirect().then(function () {
       console.log('signinRedirect done');
     }).catch(function (err) {
@@ -103,7 +102,7 @@ export class AuthService {
     });
   }
 
-  startSignoutMainWindow() {
+  logout() {
     this.mgr.getUser().then(user => {
       return this.mgr.signoutRedirect({ id_token_hint: user.id_token }).then(resp => {
         console.log('signed out', resp);

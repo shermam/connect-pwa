@@ -15,7 +15,7 @@ export class UnauthorizedComponent {
   ) { }
 
   login() {
-    this.service.startSigninMainWindow();
+    this.service.login();
   }
 
   goback() {

@@ -12,8 +12,8 @@ export class MasterPageComponent {
 
   }
 
-  startSignoutMainWindow() {
-    this.authService.startSignoutMainWindow();
+  logout() {
+    this.authService.logout();
   }
 
 }
