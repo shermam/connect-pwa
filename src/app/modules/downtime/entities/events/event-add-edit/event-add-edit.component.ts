@@ -1,18 +1,15 @@
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, FormBuilder } from "@angular/forms";
-import {
-  MillModel,
-  AreaModel,
-  SubAreaModel,
-  EquipmentModel,
-  ClassModel,
-  EventModel
-} from "../../../models/Event.models";
 import { combineDateTime, calculeDuration } from "src/app/shared/util";
-import { EventService } from "../event.service";
+import { EventService } from "../../../services/event.service";
 import { Location } from "@angular/common";
 import { MatDialog } from "@angular/material";
 import { AlertComponent } from "src/app/shared/components/alert/alert.component";
+import { MillService } from '../../../services/mill.service';
+import { ClassService } from '../../../services/class.service';
+import { MillModel } from '../../../models/Mill.model';
+import { ClassModel } from '../../../models/Class.model';
+import { EventModel } from '../../../models/Event.model';
 
 @Component({
   selector: "app-event-add-edit",
@@ -46,14 +43,16 @@ export class EventAddEditComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private eventService: EventService,
+    private millService: MillService,
+    private classService: ClassService,
     private location: Location,
     public dialog: MatDialog
-  ) {}
+  ) { }
 
   ngOnInit() {
-    this.eventService.getMills().subscribe(mills => (this.mills = mills));
-    this.eventService
-      .getClasses()
+    this.millService.get().subscribe(mills => (this.mills = mills));
+    this.classService
+      .get()
       .subscribe(classes => (this.classes = classes));
   }
 
@@ -107,7 +106,7 @@ export class EventAddEditComponent implements OnInit {
     event.IdEquipment = form.equipment ? form.equipment.IdEquipment : null;
     event.IdSubEquipament = null;
 
-    this.eventService.postEvent(event).subscribe(
+    this.eventService.post(event).subscribe(
       success => {
         this.alert("Success", "Data successfully saved!");
       },

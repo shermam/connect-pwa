@@ -26,7 +26,7 @@ import { EventFilterComponent } from "./entities/events/event-filter/event-filte
 import { ReasonFilterComponent } from "./entities/reasons/reason-filter/reason-filter.component";
 import { ReasonListComponent } from "./entities/reasons/reason-list/reason-list.component";
 import { ReasonAddEditComponent } from "./entities/reasons/reason-add-edit/reason-add-edit.component";
-import { EventService } from "./entities/events/event.service";
+import { EventService } from "./services/event.service";
 
 @NgModule({
   declarations: [
@@ -55,4 +55,4 @@ import { EventService } from "./entities/events/event.service";
   ],
   providers: [EventService]
 })
-export class DowntimeModule {}
+export class DowntimeModule { }
