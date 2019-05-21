@@ -23,6 +23,13 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
+              {
+                "glob": "**/*.min.js",
+                "input": "./node_modules/oidc-client/dist/",
+                "output": "./"
+              },
+              "src/callback.html",
+              "src/silent-renew.html",
               "src/favicon.ico",
               "src/assets",
               "src/manifest.json"
