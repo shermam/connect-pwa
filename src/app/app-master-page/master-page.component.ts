@@ -1,12 +1,19 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
   selector: "app-master-page",
   templateUrl: "./master-page.component.html",
   styleUrls: ["./master-page.component.scss"]
 })
-export class MasterPageComponent implements OnInit {
-  constructor() {}
+export class MasterPageComponent {
 
-  ngOnInit() {}
+  constructor(private authService: AuthService) {
+
+  }
+
+  startSignoutMainWindow() {
+    this.authService.startSignoutMainWindow();
+  }
+
 }
