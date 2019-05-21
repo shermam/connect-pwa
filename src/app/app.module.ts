@@ -8,10 +8,16 @@ import { environment } from "../environments/environment";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MasterPageComponent } from "./app-master-page/master-page.component";
 import { MatToolbarModule, MatButtonModule } from "@angular/material";
+import { AuthGuardService } from './shared/services/auth-guard.service';
+import { AuthService } from './shared/services/auth.service';
+import { SharedModule } from './shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, MasterPageComponent],
   imports: [
+    HttpClientModule,
+    SharedModule,
     MatToolbarModule,
     MatButtonModule,
     BrowserModule,
@@ -24,4 +30,4 @@ import { MatToolbarModule, MatButtonModule } from "@angular/material";
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
