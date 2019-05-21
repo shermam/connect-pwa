@@ -27,6 +27,8 @@ import { ReasonFilterComponent } from "./entities/reasons/reason-filter/reason-f
 import { ReasonListComponent } from "./entities/reasons/reason-list/reason-list.component";
 import { ReasonAddEditComponent } from "./entities/reasons/reason-add-edit/reason-add-edit.component";
 import { EventService } from "./services/event.service";
+import { MillService } from './services/mill.service';
+import { ClassService } from './services/class.service';
 
 @NgModule({
   declarations: [
@@ -53,6 +55,6 @@ import { EventService } from "./services/event.service";
     RouterModule.forChild(DowntimeRoutes),
     ReactiveFormsModule
   ],
-  providers: [EventService]
+  providers: [EventService, MillService, ClassService]
 })
 export class DowntimeModule { }
