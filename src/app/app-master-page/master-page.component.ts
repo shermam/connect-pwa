@@ -1,6 +1,5 @@
 import { Component } from "@angular/core";
 import { AuthService } from "../shared/services/auth.service";
-import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: "app-master-page",
@@ -8,13 +7,22 @@ import { HttpClient } from "@angular/common/http";
   styleUrls: ["./master-page.component.scss"]
 })
 export class MasterPageComponent {
-  constructor(private authService: AuthService, private http: HttpClient) {}
+  userName: string;
+  userLogin: string;
+
+  constructor(private authService: AuthService) {
+    if (
+      authService.currentUser &&
+      authService.currentUser.profile &&
+      authService.currentUser.profile.name &&
+      authService.currentUser.profile.sub
+    ) {
+      this.userName = authService.currentUser.profile.name;
+      this.userLogin = authService.currentUser.profile.sub;
+    }
+  }
 
   logout() {
     this.authService.logout();
-  }
-
-  teste() {
-    this.http.get("https://api.myjson.com/bins/evyto").subscribe(console.log);
   }
 }
