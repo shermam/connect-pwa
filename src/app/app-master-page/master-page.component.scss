@@ -1,15 +1,6 @@
 main {
-  padding: 32px 16px 16px 16px; /* compensating the toolbar */
+  padding: 88px 16px 16px 16px; /* compensating the toolbar */
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-mat-toolbar * {
-  margin: 0 10px;
-}
-
-mat-toolbar {
-  position: fixed;
-  z-index: 1;
 }
