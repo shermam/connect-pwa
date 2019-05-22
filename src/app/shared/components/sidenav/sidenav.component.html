@@ -6,7 +6,21 @@
     class="example-sidenav"
     [fixedInViewport]="true"
   >
-    <a *ngFor="let menu of menus" (click)="navigate(menu.route)" mat-button>
+    <div class="header">
+      CONNECT
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <span class="spacer"></span>
+
+    <a
+      *ngFor="let menu of menus"
+      (click)="navigate(menu.route)"
+      mat-button
+      class="menu"
+    >
+      <mat-icon>{{ menu.icon }}</mat-icon>
       {{ menu.title }}
     </a>
   </mat-sidenav>

@@ -22,3 +22,30 @@ mat-sidenav-container.mat-drawer-container {
   justify-content: center;
   width: 200px;
 }
+
+div.header {
+  display: flex;
+  height: 64px;
+  align-items: center;
+  justify-content: center;
+}
+
+span.spacer {
+  height: 32px;
+  display: block;
+}
+
+a.menu {
+  width: 100%;
+  height: 56px;
+  text-align: left;
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 600px) {
+  div.header {
+    height: 56px;
+  }
+}

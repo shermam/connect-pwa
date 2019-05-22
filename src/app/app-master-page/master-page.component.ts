@@ -26,9 +26,44 @@ export class MasterPageComponent {
 
     this.menus = [
       {
+        title: "Dashboards",
+        route: "/dashboards",
+        icon: "dashboard"
+      },
+      {
+        title: "Reports",
+        route: "/reports",
+        icon: "dashboard"
+      },
+      {
+        title: "Costs",
+        route: "/costs",
+        icon: "dashboard"
+      },
+      {
+        title: "Inventory",
+        route: "/inventory",
+        icon: "dashboard"
+      },
+      {
         title: "Lost Time",
         route: "/downtime",
-        icon: "favorite"
+        icon: "dashboard"
+      },
+      {
+        title: "Trouble Shooting",
+        route: "/trouble-shoot",
+        icon: "dashboard"
+      },
+      {
+        title: "Process Synoptics",
+        route: "/process-sinoptics",
+        icon: "dashboard"
+      },
+      {
+        title: "Profile",
+        route: "/profile",
+        icon: "dashboard"
       }
     ];
   }
