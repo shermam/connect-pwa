@@ -23,7 +23,9 @@ export class AuthInterceptorService implements HttpInterceptor {
     if (user) {
       return next.handle(
         req.clone({
-          setHeaders: { Authorization: "Bearer " + user.access_token }
+          setHeaders: {
+            Authorization: `${user.token_type} ${user.access_token}`
+          }
         })
       );
     }
