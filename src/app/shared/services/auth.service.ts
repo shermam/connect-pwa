@@ -15,17 +15,6 @@ export class AuthService {
   authHeaders: Headers;
 
   constructor() {
-    // this.currentUser = new User({
-    //   id_token: "string",
-    //   session_state: "any",
-    //   access_token: "bla bla bla bla",
-    //   refresh_token: "string",
-    //   token_type: "string",
-    //   scope: "string",
-    //   profile: "any",
-    //   expires_at: 123123,
-    //   state: "any"
-    // });
     this.mgr
       .getUser()
       .then(user => {

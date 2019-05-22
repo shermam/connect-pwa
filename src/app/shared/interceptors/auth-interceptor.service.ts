@@ -29,11 +29,5 @@ export class AuthInterceptorService implements HttpInterceptor {
     }
 
     return next.handle(req);
-
-    // return from(this.authService.getUser()).pipe(
-    //   switchMap(user =>
-    //     next.handle(req.clone({ setHeaders: { Authorization: "Bearer " + user.access_token } }))
-    //   )
-    // );
   }
 }
