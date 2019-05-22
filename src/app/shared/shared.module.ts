@@ -18,13 +18,15 @@ import { AuthInterceptorService } from "./interceptors/auth-interceptor.service"
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { ToolbarComponent } from "./components/toolbar/toolbar.component";
 import { SidenavComponent } from "./components/sidenav/sidenav.component";
+import { PageNotFoundComponent } from "./components/page-not-found/page-not-found.component";
 
 @NgModule({
   declarations: [
     AlertComponent,
     UnauthorizedComponent,
     ToolbarComponent,
-    SidenavComponent
+    SidenavComponent,
+    PageNotFoundComponent
   ],
   imports: [
     CommonModule,
