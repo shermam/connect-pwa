@@ -1,11 +1,11 @@
 <mat-toolbar color="primary" class="mat-elevation-z4">
-  <button mat-icon-button>
+  <button mat-icon-button aria-label="Side Navigation">
     <mat-icon aria-label="Side Navigation" (click)="toggleMenu()">
       menu
     </mat-icon>
   </button>
   <span class="example-spacer"></span>
-  <button mat-icon-button [matMenuTriggerFor]="menu">
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Profile">
     <mat-icon aria-label="Profile">person</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
