@@ -7,15 +7,7 @@ import { ServiceWorkerModule } from "@angular/service-worker";
 import { environment } from "../environments/environment";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MasterPageComponent } from "./app-master-page/master-page.component";
-import {
-  MatToolbarModule,
-  MatButtonModule,
-  MatMenuModule,
-  MatIconModule,
-  MatDividerModule
-} from "@angular/material";
-import { AuthGuardService } from "./shared/services/auth-guard.service";
-import { AuthService } from "./shared/services/auth.service";
+import { MatButtonModule } from "@angular/material";
 import { SharedModule } from "./shared/shared.module";
 import { HttpClientModule } from "@angular/common/http";
 
@@ -24,11 +16,7 @@ import { HttpClientModule } from "@angular/common/http";
   imports: [
     HttpClientModule,
     SharedModule,
-    MatMenuModule,
-    MatToolbarModule,
     MatButtonModule,
-    MatIconModule,
-    MatDividerModule,
     BrowserModule,
     AppRoutingModule,
     ServiceWorkerModule.register("ngsw-worker.js", {

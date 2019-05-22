@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { AuthService } from "../shared/services/auth.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-master-page",
@@ -10,7 +11,7 @@ export class MasterPageComponent {
   userName: string;
   userLogin: string;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private router: Router) {
     if (
       authService.currentUser &&
       authService.currentUser.profile &&
@@ -24,5 +25,9 @@ export class MasterPageComponent {
 
   logout() {
     this.authService.logout();
+  }
+
+  navigate(rota: string) {
+    this.router.navigate([rota]);
   }
 }

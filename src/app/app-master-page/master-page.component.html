@@ -1,19 +1,9 @@
-<mat-toolbar color="primary" class="mat-elevation-z4">
-  <a routerLink="/downtime" mat-button>Downtime</a>
-  <span class="example-spacer"></span>
-  <button mat-icon-button [matMenuTriggerFor]="menu">
-    <mat-icon aria-label="Profile">person</mat-icon>
-  </button>
-  <mat-menu #menu="matMenu">
-    <div class="user-name">{{ userName }}</div>
-    <div class="user-login">{{ userLogin }}</div>
-    <mat-divider></mat-divider>
-    <button mat-menu-item (click)="logout()">
-      <mat-icon>exit_to_app</mat-icon>
-      Logout
-    </button>
-  </mat-menu>
-</mat-toolbar>
+<app-toolbar
+  [userName]="userName"
+  [userLogin]="userLogin"
+  (logoutEvent)="logout()"
+  (navigateEvent)="navigate($event)"
+></app-toolbar>
 
 <main>
   <router-outlet></router-outlet>
