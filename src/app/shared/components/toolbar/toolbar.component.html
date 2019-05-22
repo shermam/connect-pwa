@@ -1,5 +1,9 @@
 <mat-toolbar color="primary" class="mat-elevation-z4">
-  <a (click)="navigate('/downtime')" mat-button>Downtime</a>
+  <button mat-icon-button>
+    <mat-icon aria-label="Side Navigation" (click)="toggleMenu()">
+      menu
+    </mat-icon>
+  </button>
   <span class="example-spacer"></span>
   <button mat-icon-button [matMenuTriggerFor]="menu">
     <mat-icon aria-label="Profile">person</mat-icon>

@@ -8,7 +8,8 @@ import {
   MatMenuModule,
   MatIconModule,
   MatDividerModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatSidenavModule
 } from "@angular/material";
 import { UnauthorizedComponent } from "./components/unauthorized/unauthorized.component";
 import { AuthGuardService } from "./services/auth-guard.service";
@@ -16,9 +17,15 @@ import { AuthService } from "./services/auth.service";
 import { AuthInterceptorService } from "./interceptors/auth-interceptor.service";
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { ToolbarComponent } from "./components/toolbar/toolbar.component";
+import { SidenavComponent } from "./components/sidenav/sidenav.component";
 
 @NgModule({
-  declarations: [AlertComponent, UnauthorizedComponent, ToolbarComponent],
+  declarations: [
+    AlertComponent,
+    UnauthorizedComponent,
+    ToolbarComponent,
+    SidenavComponent
+  ],
   imports: [
     CommonModule,
     MatDialogModule,
@@ -26,9 +33,15 @@ import { ToolbarComponent } from "./components/toolbar/toolbar.component";
     MatMenuModule,
     MatIconModule,
     MatDividerModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatSidenavModule
   ],
-  exports: [AlertComponent, UnauthorizedComponent, ToolbarComponent],
+  exports: [
+    AlertComponent,
+    UnauthorizedComponent,
+    ToolbarComponent,
+    SidenavComponent
+  ],
   entryComponents: [AlertComponent],
   providers: [
     AuthGuardService,

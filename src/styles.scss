@@ -14,6 +14,9 @@
 $primary: mat-palette($mat-indigo);
 $accent: mat-palette($mat-pink, A200, A100, A400);
 
+$dark: mat-palette($mat-gray, 800);
+$light: mat-palette($mat-gray, 50);
+
 // The warn palette is optional (defaults to red).
 $warn: mat-palette($mat-red);
 

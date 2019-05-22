@@ -10,6 +10,8 @@ import { Router } from "@angular/router";
 export class MasterPageComponent {
   userName: string;
   userLogin: string;
+  menus: any[];
+  sidenavOpened: boolean = false;
 
   constructor(private authService: AuthService, private router: Router) {
     if (
@@ -21,6 +23,18 @@ export class MasterPageComponent {
       this.userName = authService.currentUser.profile.name;
       this.userLogin = authService.currentUser.profile.sub;
     }
+
+    this.menus = [
+      {
+        title: "Lost Time",
+        route: "/downtime",
+        icon: "favorite"
+      }
+    ];
+  }
+
+  toggleSideNav() {
+    this.sidenavOpened = !this.sidenavOpened;
   }
 
   logout() {

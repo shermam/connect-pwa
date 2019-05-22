@@ -3,8 +3,15 @@
   [userLogin]="userLogin"
   (logoutEvent)="logout()"
   (navigateEvent)="navigate($event)"
+  (toggleMenuEvent)="toggleSideNav()"
 ></app-toolbar>
 
-<main>
-  <router-outlet></router-outlet>
-</main>
+<app-sidenav
+  [opened]="sidenavOpened"
+  [menus]="menus"
+  (navigateEvent)="navigate($event)"
+>
+  <main (click)="sidenavOpened = false">
+    <router-outlet></router-outlet>
+  </main>
+</app-sidenav>

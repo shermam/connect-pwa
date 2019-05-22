@@ -18,11 +18,18 @@ export class ToolbarComponent {
   @Output()
   navigateEvent: EventEmitter<string> = new EventEmitter();
 
+  @Output()
+  toggleMenuEvent: EventEmitter<any> = new EventEmitter();
+
   logout() {
     this.logoutEvent.emit();
   }
 
-  navigate(rota: string) {
-    this.navigateEvent.emit(rota);
+  navigate(route: string) {
+    this.navigateEvent.emit(route);
+  }
+
+  toggleMenu() {
+    this.toggleMenuEvent.emit();
   }
 }
