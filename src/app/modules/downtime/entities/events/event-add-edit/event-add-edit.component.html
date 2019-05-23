@@ -244,19 +244,9 @@
       </div>
     </form>
   </mat-card-content>
-  <mat-card-actions>
-    <button mat-button (click)="cancel()">
-      CANCEL
-    </button>
-    <button
-      mat-raised-button
-      color="primary"
-      form="addEditForm"
-      type="submit"
-      [disabled]="!addEditForm.valid"
-      (click)="onSubmit()"
-    >
-      SAVE
-    </button>
-  </mat-card-actions>
+  <ihm-card-actions
+    (cancelEvent)="cancel()"
+    (saveEvent)="onSubmit()"
+    [disabled]="!addEditForm.valid"
+  ></ihm-card-actions>
 </mat-card>

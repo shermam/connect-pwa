@@ -21,6 +21,7 @@ import { ToolbarComponent } from "./components/toolbar/toolbar.component";
 import { SidenavComponent } from "./components/sidenav/sidenav.component";
 import { PageNotFoundComponent } from "./components/page-not-found/page-not-found.component";
 import { IhmCardHeaderComponent } from "./components/ihm-card-header/ihm-card-header.component";
+import { IhmCardActionsComponent } from "./components/ihm-card-actions/ihm-card-actions.component";
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { IhmCardHeaderComponent } from "./components/ihm-card-header/ihm-card-he
     ToolbarComponent,
     SidenavComponent,
     PageNotFoundComponent,
-    IhmCardHeaderComponent
+    IhmCardHeaderComponent,
+    IhmCardActionsComponent
   ],
   imports: [
     CommonModule,
@@ -47,7 +49,8 @@ import { IhmCardHeaderComponent } from "./components/ihm-card-header/ihm-card-he
     UnauthorizedComponent,
     ToolbarComponent,
     SidenavComponent,
-    IhmCardHeaderComponent
+    IhmCardHeaderComponent,
+    IhmCardActionsComponent
   ],
   entryComponents: [AlertComponent],
   providers: [
