@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
-import { HttpClient } from '@angular/common/http';
-import { of } from 'rxjs';
-import { MillModel } from '../models/Mill.model';
+import { Injectable } from "@angular/core";
+import { environment } from "src/environments/environment";
+import { HttpClient } from "@angular/common/http";
+import { of } from "rxjs";
+import { MillModel } from "../models/Mill.model";
 
 const mockMills: MillModel[] = [
   {
@@ -158,20 +158,20 @@ const mockMills: MillModel[] = [
 ];
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class MillService {
   apiUrl: string = environment.apiUrl;
   moduleName: string = "downtime";
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   get() {
     const url = `${this.apiUrl}/${
       this.moduleName
-      }/Location/tree?$expand=Area($expand=SubArea($expand=Equipment))`;
-    //return this.http.get<MillModel[]>(url);
-    return of(mockMills);
+    }/Location/tree?$expand=Area($expand=SubArea($expand=Equipment))`;
+    return this.http.get<MillModel[]>(url);
+    //return of(mockMills);
   }
 
   post(entity: MillModel) {
@@ -179,11 +179,7 @@ export class MillService {
     return this.http.post<MillModel[]>(url, entity);
   }
 
-  put(entity: MillModel) {
+  put(entity: MillModel) {}
 
-  }
-
-  delete(entity: MillModel) {
-
-  }
+  delete(entity: MillModel) {}
 }

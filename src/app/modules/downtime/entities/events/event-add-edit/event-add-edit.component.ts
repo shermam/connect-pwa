@@ -5,11 +5,11 @@ import { EventService } from "../../../services/event.service";
 import { Location } from "@angular/common";
 import { MatDialog } from "@angular/material";
 import { AlertComponent } from "src/app/shared/components/alert/alert.component";
-import { MillService } from '../../../services/mill.service';
-import { ClassService } from '../../../services/class.service';
-import { MillModel } from '../../../models/Mill.model';
-import { ClassModel } from '../../../models/Class.model';
-import { EventModel } from '../../../models/Event.model';
+import { MillService } from "../../../services/mill.service";
+import { ClassService } from "../../../services/class.service";
+import { MillModel } from "../../../models/Mill.model";
+import { ClassModel } from "../../../models/Class.model";
+import { EventModel } from "../../../models/Event.model";
 
 @Component({
   selector: "app-event-add-edit",
@@ -47,13 +47,11 @@ export class EventAddEditComponent implements OnInit {
     private classService: ClassService,
     private location: Location,
     public dialog: MatDialog
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.millService.get().subscribe(mills => (this.mills = mills));
-    this.classService
-      .get()
-      .subscribe(classes => (this.classes = classes));
+    this.classService.get().subscribe(classes => (this.classes = classes));
   }
 
   calcDuration() {

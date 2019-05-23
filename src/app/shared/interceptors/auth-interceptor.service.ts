@@ -5,7 +5,8 @@ import {
   HttpHandler,
   HttpEvent
 } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { Observable, from } from "rxjs";
+import { switchMap } from "rxjs/operators";
 import { AuthService } from "../services/auth.service";
 
 @Injectable({
@@ -18,18 +19,34 @@ export class AuthInterceptorService implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    const user = this.authService.currentUser;
+    // const user = this.authService.currentUser;
 
-    if (user) {
-      return next.handle(
-        req.clone({
-          setHeaders: {
-            Authorization: `${user.token_type} ${user.access_token}`
-          }
-        })
-      );
-    }
+    // if (user) {
+    //   return next.handle(
+    //     req.clone({
+    //       setHeaders: {
+    //         Authorization: `${user.token_type} ${user.access_token}`
+    //       }
+    //     })
+    //   );
+    // }
 
-    return next.handle(req);
+    // return next.handle(req);
+
+    return from(this.authService.getUser()).pipe(
+      switchMap(user => {
+        if (user) {
+          return next.handle(
+            req.clone({
+              setHeaders: {
+                Authorization: `${user.token_type} ${user.access_token}`
+              }
+            })
+          );
+        }
+
+        return next.handle(req);
+      })
+    );
   }
 }

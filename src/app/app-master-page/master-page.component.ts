@@ -33,12 +33,12 @@ export class MasterPageComponent {
       {
         title: "Reports",
         route: "/reports",
-        icon: "dashboard"
+        icon: "assignment"
       },
       {
         title: "Costs",
         route: "/costs",
-        icon: "dashboard"
+        icon: "attach_money"
       },
       {
         title: "Inventory",
@@ -48,22 +48,22 @@ export class MasterPageComponent {
       {
         title: "Lost Time",
         route: "/downtime",
-        icon: "dashboard"
+        icon: "assignment_late"
       },
       {
         title: "Trouble Shooting",
         route: "/trouble-shoot",
-        icon: "dashboard"
+        icon: "build"
       },
       {
         title: "Process Synoptics",
         route: "/process-sinoptics",
-        icon: "dashboard"
+        icon: "device_hub"
       },
       {
         title: "Profile",
         route: "/profile",
-        icon: "dashboard"
+        icon: "person"
       }
     ];
   }

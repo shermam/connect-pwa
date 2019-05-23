@@ -7,7 +7,12 @@
     <mat-card-title>Add Event</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <form [formGroup]="addEditForm" (ngSubmit)="onSubmit()" id="addEditForm">
+    <form
+      [formGroup]="addEditForm"
+      (ngSubmit)="onSubmit()"
+      id="addEditForm"
+      name="addEditForm"
+    >
       <h4 class="mat-subheading-1">Location</h4>
       <div class="locations">
         <!-- Mill -->
@@ -251,6 +256,7 @@
       form="addEditForm"
       type="submit"
       [disabled]="!addEditForm.valid"
+      (click)="onSubmit()"
     >
       SAVE
     </button>

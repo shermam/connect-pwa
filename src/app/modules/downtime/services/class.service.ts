@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
-import { of } from 'rxjs';
-import { ClassModel } from '../models/Class.model';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { environment } from "src/environments/environment";
+import { of } from "rxjs";
+import { ClassModel } from "../models/Class.model";
 
 const mockClass: ClassModel[] = [
   {
@@ -97,31 +97,25 @@ const mockClass: ClassModel[] = [
 ];
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class ClassService {
   apiUrl: string = environment.apiUrl;
   moduleName: string = "downtime";
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   get() {
     const url = `${this.apiUrl}/${
       this.moduleName
-      }/ClassReason/tree?$expand=GroupReason($expand=Reason)`;
-    //return this.http.get<ClassModel[]>(url);
-    return of(mockClass);
+    }/ClassReason/tree?$expand=GroupReason($expand=Reason)`;
+    return this.http.get<ClassModel[]>(url);
+    //return of(mockClass);
   }
 
-  post(entity: ClassModel) {
+  post(entity: ClassModel) {}
 
-  }
+  put(entity: ClassModel) {}
 
-  put(entity: ClassModel) {
-
-  }
-
-  delete(entity: ClassModel) {
-
-  }
+  delete(entity: ClassModel) {}
 }

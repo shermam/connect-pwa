@@ -71,6 +71,8 @@ export class AuthService {
   }
 
   getUser(): Promise<User> {
+    if (this.currentUser) return Promise.resolve(this.currentUser);
+
     return this.mgr
       .getUser()
       .then(user => {

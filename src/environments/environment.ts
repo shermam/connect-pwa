@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: "http://localhost:49448/api",
+  apiUrl: "http://localhost:5201/oki/api",
   authConfig: {
     authority: "http://localhost:5101",
     client_id: "connectpwa",
