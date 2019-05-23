@@ -12,7 +12,8 @@ import {
   MatSidenavModule,
   MatCardModule,
   MatSelectModule,
-  MatFormFieldModule
+  MatFormFieldModule,
+  MatTableModule
 } from "@angular/material";
 import { UnauthorizedComponent } from "./components/unauthorized/unauthorized.component";
 import { AuthGuardService } from "./services/auth-guard.service";
@@ -26,6 +27,7 @@ import { IhmCardHeaderComponent } from "./components/ihm-card-header/ihm-card-he
 import { IhmCardActionsComponent } from "./components/ihm-card-actions/ihm-card-actions.component";
 import { IhmSelectComponent } from "./components/ihm-select/ihm-select.component";
 import { ReactiveFormsModule } from "@angular/forms";
+import { IhmTableComponent } from "./components/ihm-table/ihm-table.component";
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { ReactiveFormsModule } from "@angular/forms";
     PageNotFoundComponent,
     IhmCardHeaderComponent,
     IhmCardActionsComponent,
-    IhmSelectComponent
+    IhmSelectComponent,
+    IhmTableComponent
   ],
   imports: [
     CommonModule,
@@ -50,6 +53,7 @@ import { ReactiveFormsModule } from "@angular/forms";
     MatSidenavModule,
     MatSelectModule,
     MatFormFieldModule,
+    MatTableModule,
     ReactiveFormsModule
   ],
   exports: [
@@ -59,7 +63,8 @@ import { ReactiveFormsModule } from "@angular/forms";
     SidenavComponent,
     IhmCardHeaderComponent,
     IhmCardActionsComponent,
-    IhmSelectComponent
+    IhmSelectComponent,
+    IhmTableComponent
   ],
   entryComponents: [AlertComponent],
   providers: [
