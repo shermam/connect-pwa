@@ -1,0 +1,264 @@
+<mat-card>
+  <mat-card-header>
+    <div mat-card-avatar class="header-image mat-elevation-z3">
+      <i class="material-icons">event_note</i>
+    </div>
+    <mat-card-subtitle>Downtime</mat-card-subtitle>
+    <mat-card-title>Add Event</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form
+      [formGroup]="addEditForm"
+      (ngSubmit)="onSubmit()"
+      id="addEditForm"
+      name="addEditForm"
+    >
+      <h4 class="mat-subheading-1">Location</h4>
+      <div class="locations">
+        <!-- Mill -->
+        <mat-form-field appearance="fill">
+          <mat-label>Mill</mat-label>
+          <mat-select
+            placeholder="Mill"
+            formControlName="mill"
+            (selectionChange)="change('mill')"
+            required
+          >
+            <mat-option [value]="mill" *ngFor="let mill of mills">
+              {{ mill.Code }} - {{ mill.Name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!-- Area -->
+        <mat-form-field appearance="fill">
+          <mat-label>Area</mat-label>
+          <mat-select
+            placeholder="Area"
+            formControlName="area"
+            (selectionChange)="change('area')"
+            required
+          >
+            <mat-option
+              [value]="area"
+              *ngFor="
+                let area of addEditForm.value.mill
+                  ? addEditForm.value.mill.Area
+                  : []
+              "
+            >
+              {{ area.Code }} - {{ area.Name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!-- Subarea -->
+        <mat-form-field appearance="fill">
+          <mat-label>SubArea</mat-label>
+          <mat-select
+            placeholder="SubArea"
+            formControlName="subarea"
+            (selectionChange)="change('subarea')"
+            required
+          >
+            <mat-option
+              [value]="subarea"
+              *ngFor="
+                let subarea of addEditForm.value.area
+                  ? addEditForm.value.area.SubArea
+                  : []
+              "
+            >
+              {{ subarea.Code }} - {{ subarea.Name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!-- Equipament -->
+        <mat-form-field appearance="fill">
+          <mat-label>Equipment</mat-label>
+          <mat-select placeholder="Equipment" formControlName="equipment">
+            <mat-option
+              [value]="equipment"
+              *ngFor="
+                let equipment of addEditForm.value.subarea
+                  ? addEditForm.value.subarea.Equipment
+                  : []
+              "
+            >
+              {{ equipment.Code }} - {{ equipment.Name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <mat-divider></mat-divider>
+      <br />
+      <h4 class="mat-subheading-1">Interval</h4>
+
+      <div class="time">
+        <!-- Start -->
+        <div class="time-group">
+          <!-- Start Date -->
+          <mat-form-field appearance="fill">
+            <mat-label>Start date</mat-label>
+            <input
+              matInput
+              [matDatepicker]="pickerStart"
+              placeholder="Start"
+              formControlName="startDate"
+              required
+              (dateChange)="calcDuration()"
+            />
+            <mat-datepicker-toggle
+              matPrefix
+              [for]="pickerStart"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #pickerStart></mat-datepicker>
+          </mat-form-field>
+
+          <!-- Start Time -->
+          <mat-form-field appearance="fill">
+            <mat-label>Start time</mat-label>
+            <input
+              matInput
+              type="time"
+              formControlName="startTime"
+              required
+              (change)="calcDuration()"
+            />
+            <mat-icon matPrefix class="time">access_time</mat-icon>
+          </mat-form-field>
+        </div>
+        <!-- End -->
+        <div class="time-group">
+          <!-- End Date -->
+          <mat-form-field appearance="fill">
+            <mat-label>End date</mat-label>
+            <input
+              matInput
+              [matDatepicker]="pickerEnd"
+              placeholder="End"
+              formControlName="endDate"
+              required
+              (dateChange)="calcDuration()"
+            />
+            <mat-datepicker-toggle
+              matPrefix
+              [for]="pickerEnd"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #pickerEnd></mat-datepicker>
+          </mat-form-field>
+
+          <!-- End Time -->
+          <mat-form-field appearance="fill">
+            <mat-label>End time</mat-label>
+            <input
+              matInput
+              type="time"
+              formControlName="endTime"
+              required
+              (change)="calcDuration()"
+            />
+            <mat-icon matPrefix class="time">access_time</mat-icon>
+          </mat-form-field>
+        </div>
+
+        <!-- Duration -->
+        <div class="time-group">
+          <mat-form-field appearance="fill">
+            <mat-label>Duration</mat-label>
+            <input matInput [value]="duration" disabled="true" />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <mat-divider></mat-divider>
+      <br />
+
+      <h4 class="mat-subheading-1">Reason</h4>
+      <div class="reason">
+        <!-- Class -->
+        <mat-form-field appearance="fill">
+          <mat-label>Class</mat-label>
+          <mat-select
+            placeholder="Class"
+            formControlName="class"
+            (selectionChange)="change('class')"
+            required
+          >
+            <mat-option [value]="class" *ngFor="let class of classes">
+              {{ class.Code }} - {{ class.Name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!-- Group -->
+        <mat-form-field appearance="fill">
+          <mat-label>Group</mat-label>
+          <mat-select
+            placeholder="Group"
+            formControlName="group"
+            (selectionChange)="change('group')"
+            required
+          >
+            <mat-option
+              [value]="group"
+              *ngFor="
+                let group of addEditForm.value.class
+                  ? addEditForm.value.class.GroupReason
+                  : []
+              "
+            >
+              {{ group.Code }} - {{ group.Name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!-- Reason -->
+        <mat-form-field appearance="fill">
+          <mat-label>Reason</mat-label>
+          <mat-select placeholder="Reason" formControlName="reason" required>
+            <mat-option
+              [value]="reason"
+              *ngFor="
+                let reason of addEditForm.value.group
+                  ? addEditForm.value.group.Reason
+                  : []
+              "
+            >
+              {{ reason.Code }} - {{ reason.Name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="observation">
+        <mat-form-field appearance="fill">
+          <mat-label>Observation</mat-label>
+          <textarea
+            matInput
+            placeholder="Observation"
+            formControlName="observation"
+            maxlength="200"
+          ></textarea>
+        </mat-form-field>
+      </div>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="cancel()">
+      CANCEL
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      form="addEditForm"
+      type="submit"
+      [disabled]="!addEditForm.valid"
+      (click)="onSubmit()"
+    >
+      SAVE
+    </button>
+  </mat-card-actions>
+</mat-card>

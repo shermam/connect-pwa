@@ -1,0 +1,7 @@
+main {
+  padding: 32px 16px 16px 16px; /* compensating the toolbar */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: calc(100% - 104px); /* compensating padding */
+}

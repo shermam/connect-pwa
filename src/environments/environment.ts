@@ -4,7 +4,22 @@
 
 export const environment = {
   production: false,
-  apiUrl: "http://localhost:5102/api"
+  apiUrl: "http://localhost:5201/oki/api",
+  authConfig: {
+    authority: "http://localhost:5101",
+    client_id: "connectpwa",
+    redirect_uri: "http://localhost:4200/callback.html",
+    post_logout_redirect_uri: "http://localhost:4200/",
+    response_type: "id_token token",
+    scope: "openid profile common downtime",
+
+    silent_redirect_uri: "http://localhost:4200/silent-renew.html",
+    automaticSilentRenew: true,
+    accessTokenExpiringNotificationTime: 4,
+    // silentRequestTimeout:10000,
+    filterProtocolClaims: true,
+    loadUserInfo: true
+  }
 };
 
 /*

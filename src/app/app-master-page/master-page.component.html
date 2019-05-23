@@ -1,7 +1,17 @@
-<!-- TODO Aqui vai ficar a navbar, side bar e footer -->
+<app-toolbar
+  [userName]="userName"
+  [userLogin]="userLogin"
+  (logoutEvent)="logout()"
+  (navigateEvent)="navigate($event)"
+  (toggleMenuEvent)="toggleSideNav()"
+></app-toolbar>
 
-<a routerLink="downtime">downtime</a>
-
-<!-- <pre>{{menu|json}}</pre> -->
-
-<router-outlet></router-outlet>
+<app-sidenav
+  [opened]="sidenavOpened"
+  [menus]="menus"
+  (navigateEvent)="navigate($event)"
+>
+  <main (click)="sidenavOpened = false">
+    <router-outlet></router-outlet>
+  </main>
+</app-sidenav>

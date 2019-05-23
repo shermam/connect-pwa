@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible"
+        content="ie=edge">
+    <title>Connet Login</title>
+</head>
+
+<body>
+    <h1 id="waiting">Waiting...</h1>
+    <div id="error"></div>
+    <script src="oidc-client.min.js"></script>
+    <script>
+        var Oidc = window.Oidc,
+            UserManager = Oidc.UserManager;
+
+        if ((Oidc && Oidc.Log && Oidc.Log.logger)) {
+            Oidc.Log.logger = console;
+        }
+        new UserManager().signinRedirectCallback().then(function (user) {
+            if (user == null) {
+                document.getElementById("waiting").style.display = "none";
+                document.getElementById("error").innerText = "No sign-in request pending.";
+            }
+            else {
+                window.location = "/";
+            }
+        })
+            .catch(function (er) {
+                document.getElementById("waiting").style.display = "none";
+                document.getElementById("error").innerText = er.message;
+            });
+
+    </script>
+</body>
+
+</html>
