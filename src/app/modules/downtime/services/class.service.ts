@@ -109,8 +109,8 @@ export class ClassService {
     const url = `${this.apiUrl}/${
       this.moduleName
     }/ClassReason/tree?$expand=GroupReason($expand=Reason)`;
-    return this.http.get<ClassModel[]>(url);
-    //return of(mockClass);
+    //return this.http.get<ClassModel[]>(url);
+    return of(mockClass);
   }
 
   post(entity: ClassModel) {}
