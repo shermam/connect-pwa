@@ -1,8 +1,9 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Inject, LOCALE_ID } from "@angular/core";
 import { Observable } from "rxjs";
 import { EventModelList } from "../../../models/Event.model";
 import { EventService } from "../../../services/event.service";
 import { column } from "src/app/shared/components/ihm-table/ihm-table.component";
+import { formatDate } from "@angular/common";
 
 @Component({
   selector: "app-event-list",
@@ -12,8 +13,13 @@ import { column } from "src/app/shared/components/ihm-table/ihm-table.component"
 export class EventListComponent implements OnInit {
   $data: Observable<EventModelList[]>;
   columnsToDisplay: column[];
+  dateFormatter = dateString =>
+    formatDate(new Date(dateString), "dd/MM/yyyy HH:mm", this.locale);
 
-  constructor(private service: EventService) {}
+  constructor(
+    private service: EventService,
+    @Inject(LOCALE_ID) private locale: string
+  ) {}
 
   ngOnInit() {
     this.$data = this.service.get();
@@ -24,11 +30,13 @@ export class EventListComponent implements OnInit {
       },
       {
         label: "Start",
-        property: "beginDateTime"
+        property: "beginDateTime",
+        formatter: this.dateFormatter
       },
       {
         label: "End",
-        property: "endDateTime"
+        property: "endDateTime",
+        formatter: this.dateFormatter
       },
       {
         label: "Reason",

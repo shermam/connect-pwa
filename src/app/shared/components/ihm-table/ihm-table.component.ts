@@ -4,6 +4,7 @@ export interface column {
   property: string;
   label: string;
   action?: columAction;
+  formatter?: (value: any) => any;
 }
 
 export interface columAction {
@@ -25,5 +26,10 @@ export class IhmTableComponent implements OnInit {
 
   ngOnInit() {
     this.columnNames = this.columnsToDisplay.map(c => c.property);
+  }
+
+  format(value, formatter) {
+    if (formatter) return formatter(value);
+    return value;
   }
 }
