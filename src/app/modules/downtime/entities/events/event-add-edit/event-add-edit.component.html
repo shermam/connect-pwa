@@ -26,65 +26,42 @@
         ></ihm-select>
 
         <!-- Area -->
-        <mat-form-field appearance="fill">
-          <mat-label>Area</mat-label>
-          <mat-select
-            placeholder="Area"
-            formControlName="area"
-            (selectionChange)="change('area')"
-            required
-          >
-            <mat-option
-              [value]="area"
-              *ngFor="
-                let area of addEditForm.value.mill
-                  ? addEditForm.value.mill.Area
-                  : []
-              "
-            >
-              {{ area.Code }} - {{ area.Name }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+        <ihm-select
+          label="Area"
+          placeholder="Area"
+          formControlName="area"
+          name="area"
+          [required]="true"
+          [items]="addEditForm.value.mill ? addEditForm.value.mill.Area : []"
+          optionProperty="Name"
+          (changeEvent)="change($event)"
+        ></ihm-select>
 
         <!-- Subarea -->
-        <mat-form-field appearance="fill">
-          <mat-label>SubArea</mat-label>
-          <mat-select
-            placeholder="SubArea"
-            formControlName="subarea"
-            (selectionChange)="change('subarea')"
-            required
-          >
-            <mat-option
-              [value]="subarea"
-              *ngFor="
-                let subarea of addEditForm.value.area
-                  ? addEditForm.value.area.SubArea
-                  : []
-              "
-            >
-              {{ subarea.Code }} - {{ subarea.Name }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+        <ihm-select
+          label="SubArea"
+          placeholder="SubArea"
+          formControlName="subarea"
+          name="subarea"
+          [required]="true"
+          [items]="addEditForm.value.area ? addEditForm.value.area.SubArea : []"
+          optionProperty="Name"
+          (changeEvent)="change($event)"
+        ></ihm-select>
 
         <!-- Equipament -->
-        <mat-form-field appearance="fill">
-          <mat-label>Equipment</mat-label>
-          <mat-select placeholder="Equipment" formControlName="equipment">
-            <mat-option
-              [value]="equipment"
-              *ngFor="
-                let equipment of addEditForm.value.subarea
-                  ? addEditForm.value.subarea.Equipment
-                  : []
-              "
-            >
-              {{ equipment.Code }} - {{ equipment.Name }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+        <ihm-select
+          label="Equipment"
+          placeholder="Equipment"
+          formControlName="equipment"
+          name="equipment"
+          [required]="false"
+          [items]="
+            addEditForm.value.subarea ? addEditForm.value.subarea.Equipment : []
+          "
+          optionProperty="Name"
+          (changeEvent)="change($event)"
+        ></ihm-select>
       </div>
 
       <mat-divider></mat-divider>
@@ -174,58 +151,44 @@
       <h4 class="mat-subheading-1">Reason</h4>
       <div class="reason">
         <!-- Class -->
-        <mat-form-field appearance="fill">
-          <mat-label>Class</mat-label>
-          <mat-select
-            placeholder="Class"
-            formControlName="class"
-            (selectionChange)="change('class')"
-            required
-          >
-            <mat-option [value]="class" *ngFor="let class of classes">
-              {{ class.Code }} - {{ class.Name }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+        <ihm-select
+          label="Class"
+          placeholder="Class"
+          formControlName="class"
+          name="class"
+          [required]="true"
+          [items]="classes"
+          optionProperty="Name"
+          (changeEvent)="change($event)"
+        ></ihm-select>
 
         <!-- Group -->
-        <mat-form-field appearance="fill">
-          <mat-label>Group</mat-label>
-          <mat-select
-            placeholder="Group"
-            formControlName="group"
-            (selectionChange)="change('group')"
-            required
-          >
-            <mat-option
-              [value]="group"
-              *ngFor="
-                let group of addEditForm.value.class
-                  ? addEditForm.value.class.GroupReason
-                  : []
-              "
-            >
-              {{ group.Code }} - {{ group.Name }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+        <ihm-select
+          label="Group"
+          placeholder="Group"
+          formControlName="group"
+          name="group"
+          [required]="true"
+          [items]="
+            addEditForm.value.class ? addEditForm.value.class.GroupReason : []
+          "
+          optionProperty="Name"
+          (changeEvent)="change($event)"
+        ></ihm-select>
 
         <!-- Reason -->
-        <mat-form-field appearance="fill">
-          <mat-label>Reason</mat-label>
-          <mat-select placeholder="Reason" formControlName="reason" required>
-            <mat-option
-              [value]="reason"
-              *ngFor="
-                let reason of addEditForm.value.group
-                  ? addEditForm.value.group.Reason
-                  : []
-              "
-            >
-              {{ reason.Code }} - {{ reason.Name }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+        <ihm-select
+          label="Reason"
+          placeholder="Reason"
+          formControlName="reason"
+          name="reason"
+          [required]="true"
+          [items]="
+            addEditForm.value.group ? addEditForm.value.group.Reason : []
+          "
+          optionProperty="Name"
+          (changeEvent)="change($event)"
+        ></ihm-select>
       </div>
 
       <div class="observation">

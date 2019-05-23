@@ -22,7 +22,7 @@ export class AuthService {
           this.loggedIn = true;
           this.currentUser = user;
           this.userLoadededEvent.emit(user);
-          console.log(this.currentUser);
+          //console.log(this.currentUser);
         } else {
           this.loggedIn = false;
         }
@@ -77,7 +77,7 @@ export class AuthService {
       .getUser()
       .then(user => {
         this.currentUser = user;
-        console.log("got user", user);
+        //console.log("got user", user);
         this.userLoadededEvent.emit(user);
         return user;
       })
