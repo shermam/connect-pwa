@@ -9,7 +9,8 @@ import {
   MatIconModule,
   MatDividerModule,
   MatToolbarModule,
-  MatSidenavModule
+  MatSidenavModule,
+  MatCardModule
 } from "@angular/material";
 import { UnauthorizedComponent } from "./components/unauthorized/unauthorized.component";
 import { AuthGuardService } from "./services/auth-guard.service";
@@ -19,6 +20,7 @@ import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { ToolbarComponent } from "./components/toolbar/toolbar.component";
 import { SidenavComponent } from "./components/sidenav/sidenav.component";
 import { PageNotFoundComponent } from "./components/page-not-found/page-not-found.component";
+import { IhmCardHeaderComponent } from "./components/ihm-card-header/ihm-card-header.component";
 
 @NgModule({
   declarations: [
@@ -26,10 +28,12 @@ import { PageNotFoundComponent } from "./components/page-not-found/page-not-foun
     UnauthorizedComponent,
     ToolbarComponent,
     SidenavComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    IhmCardHeaderComponent
   ],
   imports: [
     CommonModule,
+    MatCardModule,
     MatDialogModule,
     MatButtonModule,
     MatMenuModule,
@@ -42,7 +46,8 @@ import { PageNotFoundComponent } from "./components/page-not-found/page-not-foun
     AlertComponent,
     UnauthorizedComponent,
     ToolbarComponent,
-    SidenavComponent
+    SidenavComponent,
+    IhmCardHeaderComponent
   ],
   entryComponents: [AlertComponent],
   providers: [

@@ -1,11 +1,9 @@
 <mat-card>
-  <mat-card-header>
-    <div mat-card-avatar class="header-image mat-elevation-z3">
-      <i class="material-icons">event_note</i>
-    </div>
-    <mat-card-subtitle>Downtime</mat-card-subtitle>
-    <mat-card-title>Add Event</mat-card-title>
-  </mat-card-header>
+  <ihm-card-header
+    icon="event_note"
+    subtitle="Downtime"
+    title="Add Event"
+  ></ihm-card-header>
   <mat-card-content>
     <form
       [formGroup]="addEditForm"
