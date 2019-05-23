@@ -10,7 +10,9 @@ import {
   MatDividerModule,
   MatToolbarModule,
   MatSidenavModule,
-  MatCardModule
+  MatCardModule,
+  MatSelectModule,
+  MatFormFieldModule
 } from "@angular/material";
 import { UnauthorizedComponent } from "./components/unauthorized/unauthorized.component";
 import { AuthGuardService } from "./services/auth-guard.service";
@@ -22,6 +24,8 @@ import { SidenavComponent } from "./components/sidenav/sidenav.component";
 import { PageNotFoundComponent } from "./components/page-not-found/page-not-found.component";
 import { IhmCardHeaderComponent } from "./components/ihm-card-header/ihm-card-header.component";
 import { IhmCardActionsComponent } from "./components/ihm-card-actions/ihm-card-actions.component";
+import { IhmSelectComponent } from "./components/ihm-select/ihm-select.component";
+import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -31,7 +35,8 @@ import { IhmCardActionsComponent } from "./components/ihm-card-actions/ihm-card-
     SidenavComponent,
     PageNotFoundComponent,
     IhmCardHeaderComponent,
-    IhmCardActionsComponent
+    IhmCardActionsComponent,
+    IhmSelectComponent
   ],
   imports: [
     CommonModule,
@@ -42,7 +47,10 @@ import { IhmCardActionsComponent } from "./components/ihm-card-actions/ihm-card-
     MatIconModule,
     MatDividerModule,
     MatToolbarModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    ReactiveFormsModule
   ],
   exports: [
     AlertComponent,
@@ -50,7 +58,8 @@ import { IhmCardActionsComponent } from "./components/ihm-card-actions/ihm-card-
     ToolbarComponent,
     SidenavComponent,
     IhmCardHeaderComponent,
-    IhmCardActionsComponent
+    IhmCardActionsComponent,
+    IhmSelectComponent
   ],
   entryComponents: [AlertComponent],
   providers: [

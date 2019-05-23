@@ -14,19 +14,16 @@
       <h4 class="mat-subheading-1">Location</h4>
       <div class="locations">
         <!-- Mill -->
-        <mat-form-field appearance="fill">
-          <mat-label>Mill</mat-label>
-          <mat-select
-            placeholder="Mill"
-            formControlName="mill"
-            (selectionChange)="change('mill')"
-            required
-          >
-            <mat-option [value]="mill" *ngFor="let mill of mills">
-              {{ mill.Code }} - {{ mill.Name }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+        <ihm-select
+          label="Mill"
+          placeholder="Mill"
+          formControlName="mill"
+          name="mill"
+          [required]="true"
+          [items]="mills"
+          optionProperty="Name"
+          (changeEvent)="change($event)"
+        ></ihm-select>
 
         <!-- Area -->
         <mat-form-field appearance="fill">
