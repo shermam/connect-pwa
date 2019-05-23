@@ -17,7 +17,7 @@
   justify-content: space-between;
 }
 
-.locations mat-form-field {
+.locations > * {
   width: 23%;
 }
 
@@ -47,7 +47,7 @@
     flex-direction: column;
   }
 
-  .locations mat-form-field,
+  .locations > *,
   .time-group {
     width: 100%;
   }
