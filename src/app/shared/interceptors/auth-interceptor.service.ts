@@ -19,20 +19,6 @@ export class AuthInterceptorService implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    // const user = this.authService.currentUser;
-
-    // if (user) {
-    //   return next.handle(
-    //     req.clone({
-    //       setHeaders: {
-    //         Authorization: `${user.token_type} ${user.access_token}`
-    //       }
-    //     })
-    //   );
-    // }
-
-    // return next.handle(req);
-
     return from(this.authService.getUser()).pipe(
       switchMap(user => {
         if (user) {
