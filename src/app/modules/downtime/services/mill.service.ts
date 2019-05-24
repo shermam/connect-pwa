@@ -167,7 +167,7 @@ export class MillService {
   constructor(private http: HttpClient) {}
 
   get() {
-    const url = `${this.apiUrl}/${
+    const url = `${this.apiUrl}lontar/${
       this.moduleName
     }/Location/tree?$expand=Area($expand=SubArea($expand=Equipment))`;
     return this.http.get<MillModel[]>(url);

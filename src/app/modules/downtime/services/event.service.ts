@@ -330,7 +330,12 @@ export class EventService {
   }
 
   post(entity: EventModel) {
-    const url = `${this.apiUrl}/${this.moduleName}/event`;
+    let url = `${this.apiUrl}lontar/${this.moduleName}/event`;
+
+    if (entity.Comment == "1") {
+      url = `${this.apiUrl}oki/${this.moduleName}/event`;
+    }
+
     return this.http.post<EventModel[]>(url, entity);
     //return of(event);
     //return throwError(new Error("deu pau"));

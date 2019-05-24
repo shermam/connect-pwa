@@ -106,7 +106,7 @@ export class ClassService {
   constructor(private http: HttpClient) {}
 
   get() {
-    const url = `${this.apiUrl}/${
+    const url = `${this.apiUrl}lontar/${
       this.moduleName
     }/ClassReason/tree?$expand=GroupReason($expand=Reason)`;
     return this.http.get<ClassModel[]>(url);
