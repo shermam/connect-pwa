@@ -22,26 +22,13 @@ import { MatSelect } from "@angular/material";
   ]
 })
 export class IhmSelectComponent implements ControlValueAccessor {
-  private _items: Array<any>;
-
   @ViewChild(MatSelect) matSelect: MatSelect;
   @Input() label: string;
   @Input() placeholder: string;
   @Input() name: string;
   @Input() required: boolean;
   @Input() optionProperty: string;
-
-  @Input()
-  set items(value: Array<any>) {
-    this._items = value;
-
-    // TODO - Isso é gambi. Tinha que ser atualizado automaticamente com o reactive forms
-    this.matSelect.value = null;
-  }
-
-  get items() {
-    return this._items;
-  }
+  @Input() items: Array<any>;
 
   @Output() changeEvent: EventEmitter<string> = new EventEmitter<string>();
 
@@ -50,7 +37,7 @@ export class IhmSelectComponent implements ControlValueAccessor {
   }
 
   writeValue(value: any): void {
-    this.matSelect.writeValue(value);
+    this.matSelect.value = value;
   }
 
   registerOnChange(fn: any): void {
