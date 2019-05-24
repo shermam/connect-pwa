@@ -13,7 +13,7 @@ const routes: Routes = [
   {
     path: "",
     component: MasterPageComponent,
-    //canActivate: [AuthGuardService],
+    canActivate: [AuthGuardService],
     children: [
       {
         path: "downtime",

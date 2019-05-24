@@ -170,8 +170,8 @@ export class MillService {
     const url = `${this.apiUrl}/${
       this.moduleName
     }/Location/tree?$expand=Area($expand=SubArea($expand=Equipment))`;
-    //return this.http.get<MillModel[]>(url);
-    return of(mockMills);
+    return this.http.get<MillModel[]>(url);
+    //return of(mockMills);
   }
 
   post(entity: MillModel) {
